@@ -79,10 +79,8 @@
 									<th class="center"> # </th>
 									<th> Building Code </th>
 									<th> Building Name </th>
-										<th class="hidden-480">
-										Qty Floors
-									</th>
-									<th class="hidden-480">
+									<th> Qty Floors </th>
+									<th>
 										Qty Rooms
 									</th>
 									<th>
@@ -106,7 +104,12 @@
                       echo $query->countAllResults();
                     ?>
 									</td>
-									<td>  </td>
+									<td>
+										 <?php
+                      $query = $db->table('table-rooms')->where(['buildings_id' => $value['buildings_id']]);
+                      echo $query->countAllResults();
+                    ?>
+									</td>
 									<td class="center">
 										<div class="hidden-sm hidden-xs btn-group">
 											<a data-toggle="tooltip" data-placement="top" rel="tooltip" title="Detail" href="<?= site_url('admin/location-buildings/' . $value['buildings_id']) ?>" class="btn btn-xs btn-success">
@@ -209,14 +212,19 @@
           <div id="deletegedung<?php echo $value['buildings_id'] ?>" class="modal fade" role="dialog">
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title"><span class="label label-inverse"> # Delete</span> &nbsp; Are you sure you want to delete <u><?= $value['buildings_name'] ?></u> from Database?<span style="font-size: 14px; font-style: italic;"> Use at your own risk </span></h5>
+						<div class="modal-header" style="padding: 1rem;">
+							<h5 class="modal-title"><h3 class="text-center"><b class="">Delete Category?</b></h3><h5 class="text-center">Are you sure want to delete <strong>"Golongan Tanah"</strong>? You can't undo this action</h5></h5>
 						</div>
 						<div class="modal-body" align="center">
-							<a href="<?= site_url('admin/floors/delete/'.$value['buildings_id']) ?>" class="btn btn-danger">&nbsp; &nbsp;YES&nbsp; &nbsp;</a>
+							<div class="alert alert-danger" role="alert">
+							  <h4 class="alert-heading"><i class="fa fa-exclamation-triangle"></i> Warning</h4>
+							  <p>By deleting this category, <b>"Connected data in other table"</b> will also be deleted</p>
+							</div>
+							<a href="#" class="btn btn-success">&nbsp; &nbsp;NO, Just disable it&nbsp; &nbsp;</a>
+							<a href="<?= site_url('admin/floors/delete/'.$value['buildings_id']) ?>" class="btn btn-danger">&nbsp; &nbsp;YES, Delete it&nbsp;&nbsp;<i class="fa fa-trash fa-lg"></i>&nbsp; &nbsp;</a>
 						</div>
 						<div class="modal-footer">
-							<a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+							<a href="javascript:;" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
 						</div>
 					</div>
 				</div>

@@ -6,7 +6,7 @@ use App\Models\Admin\DtsModel1;
  
 class DtsModel1 extends Model
 {
-    protected $table = "tabel-master-plm";
+    protected $table = "inventaris_peralatan";
     protected $column_order = array(null, 'kode_barang', 'nup', 'nama_barang', 'kondisi', 'merk_tipe', 'tgl_rekam_pertama', 'tgl_perolehan', 'nilai_perolehan_pertama', 'nilai_mutasi', 'nilai_perolehan', 'nilai_penyusutan', 'nilai_buku', 'kuantitas', 'no_psp', 'tgl_psp', null);
     protected $column_search = array('kode_barang', 'nup', 'nama_barang', 'kondisi');
     protected $order = array('kode_barang' => 'asc');

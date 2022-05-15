@@ -8,8 +8,4 @@ class Home extends BaseController
     {
         echo "Halaman Home";
     }
-
-    public function tambah(){
-        addNumber(1,4);
-    }
-}
+ }

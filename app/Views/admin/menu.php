@@ -1,3 +1,7 @@
+<?php
+$uri = new \CodeIgniter\HTTP\URI();
+?>
+
 <div id="sidebar" class="sidebar responsive ace-save-state">
 	<script type="text/javascript">
 		try{ace.settings.loadState('sidebar')}catch(e){}
@@ -26,16 +30,28 @@
 	</div>
 	<!-- /.sidebar-shortcuts -->
 	<ul class="nav nav-list">
-		<li class="">
+		<li class="<?=(current_url()==site_url('admin')) ? 'active':''?>">
 			<a href="<?= site_url('admin') ?>">
 			<i class="menu-icon fa fa-tachometer"></i>
 			<span class="menu-text"> Dashboard </span>
 			</a>
 			<b class="arrow"></b>
 		</li>
-		<li class="">
+		<li class="
+		<?=(current_url() == site_url('admin/kategori')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/lokasi')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/lokasi/add')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/lokasi-kategori')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/gedung')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/kondisi')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/satuan')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/hak')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/perolehan')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/pengguna')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/pengguna-kategori')) ? 'active open':''?>
+		">
 			<a href="#" class="dropdown-toggle">
-			<i class="menu-icon fa fa-database"></i>
+			<i class="menu-icon fa fa-pencil-square-o"></i>
 			<span class="menu-text">
 			Data Store
 			</span>
@@ -43,214 +59,149 @@
 			</a>
 			<b class="arrow"></b>
 			<ul class="submenu">
-				<li class="">
-					<a href="<?= site_url('admin/categories') ?>">
+				<li class="<?=(current_url() == site_url('admin/kategori')) ? 'active':''?>">
+					<a href="<?= site_url('admin/kategori') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
-					Categories
+					Kategori
 					</a>
 					<b class="arrow"></b>
 				</li>
-				<li class="">
-					<a href="<?= site_url('admin/location-buildings') ?>">
+				<li class="
+				<?=(current_url() == site_url('admin/lokasi')) ? 'active':''?>
+				<?=(current_url() == site_url('admin/lokasi/add')) ? 'active':''?>
+				<?=(current_url() == site_url('admin/lokasi-kategori')) ? 'active':''?>
+				<?=(current_url() == site_url('admin/gedung')) ? 'active':''?>
+				">
+					<a href="<?= site_url('admin/lokasi') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
-					Location
+					Lokasi
 					</a>
 					<b class="arrow"></b>
 				</li>
-				<li class="">
-					<a href="buttons.html">
+				<li class="<?=(current_url() == site_url('admin/kondisi')) ? 'active':''?>">
+					<a href="<?= site_url('admin/kondisi') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
-					Status
+					Kondisi
 					</a>
 					<b class="arrow"></b>
 				</li>
-				<li class="">
-					<a href="content-slider.html">
+				<li class="<?=(current_url() == site_url('admin/satuan')) ? 'active':''?>">
+					<a href="<?= site_url('admin/satuan') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
-					Unit of Measure
+					Satuan
 					</a>
 					<b class="arrow"></b>
 				</li>
-				<li class="">
-					<a href="treeview.html">
+				<li class="<?=(current_url() == site_url('admin/hak')) ? 'active':''?>">
+					<a href="<?= site_url('admin/hak') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
-					Historical Asset
+					Hak
 					</a>
 					<b class="arrow"></b>
 				</li>
-				<li class="">
-					<a href="jquery-ui.html">
+				<li class="<?=(current_url() == site_url('admin/perolehan')) ? 'active':''?>">
+					<a href="<?= site_url('admin/perolehan') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
-					Person in Charge
+					Perolehan
 					</a>
 					<b class="arrow"></b>
 				</li>
-				<li class="">
-					<a href="nestable-list.html">
+				<li class="
+				<?=(current_url() == site_url('admin/pengguna')) ? 'active':''?>
+				<?=(current_url() == site_url('admin/pengguna-kategori')) ? 'active':''?>
+				">
+					<a href="<?= site_url('admin/pengguna') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
-					User
+					Pengguna
 					</a>
 					<b class="arrow"></b>
 				</li>
 			</ul>
 		</li>
-		<li class="">
-			<a href="#" class="dropdown-toggle">
-			<i class="menu-icon fa fa-file-excel-o"></i>
-			<span class="menu-text"> Import </span>
-			<b class="arrow fa fa-angle-down"></b>
-			</a>
-			<b class="arrow"></b>
-			<ul class="submenu">
-				<li class="">
-					<a href="tables.html">
-					<i class="menu-icon fa fa-caret-right"></i>
-					Drafted Import
-					</a>
-					<b class="arrow"></b>
-				</li>
-				<li class="">
-					<a href="#" class="dropdown-toggle">
-					<i class="menu-icon fa fa-caret-right"></i>
-					Import Data
-					<b class="arrow fa fa-angle-down"></b>
-					</a>
-					<b class="arrow"></b>
-					<ul class="submenu">
-						<li class="">
-							<a href="#">
-							<i class="menu-icon fa fa-leaf green"></i>
-							#2 Tanah
-							</a>
-							<b class="arrow"></b>
-						</li>
-						<li class="">
-							<a href="<?= site_url('admin/peralatan-mesin/view-import') ?>">
-							<i class="menu-icon fa fa-leaf green"></i>
-							#3 Mesin
-							</a>
-							<b class="arrow"></b>
-						</li>
-						<li class="">
-							<a href="#">
-							<i class="menu-icon fa fa-leaf green"></i>
-							#4 Gedung
-							</a>
-							<b class="arrow"></b>
-						</li>
-						<li class="">
-							<a href="#">
-							<i class="menu-icon fa fa-leaf green"></i>
-							#5 Irigasi
-							</a>
-							<b class="arrow"></b>
-						</li>
-						<li class="">
-							<a href="#">
-							<i class="menu-icon fa fa-leaf green"></i>
-							#6 Aset Tetap
-							</a>
-							<b class="arrow"></b>
-						</li>
-						<li class="">
-							<a href="#">
-							<i class="menu-icon fa fa-leaf green"></i>
-							#7 Konstruksi
-							</a>
-							<b class="arrow"></b>
-						</li>
-						<li class="">
-							<a href="#">
-							<i class="menu-icon fa fa-leaf green"></i>
-							#8 Tak Berwujud
-							</a>
-							<b class="arrow"></b>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-		<li class="">
-			<a href="<?= site_url('admin/master-asset') ?>">
-			<i class="menu-icon fa fa-building-o"></i>
-			<span class="menu-text"> Master Assets </span>
+
+		<li class="
+		<?=(current_url() == site_url('admin/inventaris')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/inventaris_tanah')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/inventaris_peralatan')) ? 'active':''?>
+		">
+			<a href="<?= site_url('admin/inventaris') ?>">
+			<i class="menu-icon glyphicon glyphicon-cloud"></i>
+			<span class="menu-text"> Data Inventaris </span>
 			</a>
 			<b class="arrow"></b>
 		</li>
 		<li class="">
 			<a href="#">
-			<i class="menu-icon fa fa-bar-chart"></i>
+			<i class="menu-icon fa fa-line-chart "></i>
 			<span class="menu-text"> Statistik </span>
 			</a>
 			<b class="arrow"></b>
 		</li>
-		<li class="">
+		<li class="<?=(current_url() == site_url('admin/penempatan')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/penempatan/new')) ? 'active open':''?>">
 			<a href="#" class="dropdown-toggle">
-			<i class="menu-icon fa fa-exchange"></i>
-			<span class="menu-text"> Transaction </span>
+			<i class="menu-icon fa fa-check-square-o"></i>
+			<span class="menu-text"> Transaksi </span>
 			<b class="arrow fa fa-angle-down"></b>
 			</a>
 			<b class="arrow"></b>
 			<ul class="submenu">
+				<li class="
+				<?=(current_url() == site_url('admin/penempatan')) ? 'active':''?>
+				<?=(current_url() == site_url('admin/penempatan/new')) ? 'active':''?>
+				">
+					<a href="<?= site_url('admin/penempatan') ?>">
+					<i class="menu-icon fa fa-caret-right"></i>
+					Penempatan
+					</a>
+					<b class="arrow"></b>
+				</li>
 				<li class="">
 					<a href="<?= site_url('admin/mutasi') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
-					#1 Movement
+					Mutasi
 					</a>
 					<b class="arrow"></b>
 				</li>
 				<li class="">
 					<a href="<?= site_url('admin/user') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
-					#2 Disposal
+					Penghapusan
 					</a>
 					<b class="arrow"></b>
 				</li>
 			</ul>
 		</li>
-		<li class="">
+		<li class="
+		<?=(current_url() == site_url('admin/inventaris_ruangan')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/inventaris_lainnya')) ? 'active open':''?>
+		">
 			<a href="#" class="dropdown-toggle">
-			<i class="menu-icon fa fa-link"></i>
-			<span class="menu-text"> Menu Interactive </span>
+			<i class="menu-icon fa fa-codepen"></i>
+			<span class="menu-text"> Menu Interaktif </span>
 			<b class="arrow fa fa-angle-down"></b>
 			</a>
 			<b class="arrow"></b>
 			<ul class="submenu">
-				<li class="">
-					<a href="profile.html">
+				<li class="<?=(current_url() == site_url('admin/inventaris_ruangan')) ? 'active':''?>">
+					<a href="<?= site_url('admin/inventaris_ruangan') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
-					#1 Daftar Barang Ruangan
+					D B R
 					</a>
 					<b class="arrow"></b>
 				</li>
-				<li class="">
-					<a href="<?= site_url('admin/user') ?>">
+				<li class="<?=(current_url() == site_url('admin/inventaris_lainnya')) ? 'active':''?>">
+					<a href="<?= site_url('admin/inventaris_lainnya') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
-					#2 Daftar Barang Lainnya
-					</a>
-					<b class="arrow"></b>
-				</li>
-				<li class="">
-					<a href="<?= site_url('admin/user') ?>">
-					<i class="menu-icon fa fa-caret-right"></i>
-					#3 Kartu Inventaris Barang
+					D B L
 					</a>
 					<b class="arrow"></b>
 				</li>
 			</ul>
 		</li>
 		<li class="">
-			<a href="calendar.html">
-			<i class="menu-icon fa fa-qrcode"></i>
-			<span class="menu-text">
-			Cetak QR-Code
-			</span>
-			</a>
-			<b class="arrow"></b>
-		</li>
-		<li class="">
 			<a href="#" class="dropdown-toggle">
-			<i class="menu-icon fa fa-file"></i>
+			<i class="menu-icon fa fa-print"></i>
 			<span class="menu-text"> Report </span>
 			<b class="arrow fa fa-angle-down"></b>
 			</a>
@@ -259,21 +210,21 @@
 				<li class="">
 					<a href="profile.html">
 					<i class="menu-icon fa fa-caret-right"></i>
-					Report KIB
+					K I B
 					</a>
 					<b class="arrow"></b>
 				</li>
 				<li class="">
 					<a href="<?= site_url('admin/user') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
-					Report DBR
+					D B R
 					</a>
 					<b class="arrow"></b>
 				</li>
 				<li class="">
 					<a href="pricing.html">
 					<i class="menu-icon fa fa-caret-right"></i>
-					Report DBL
+					D B L
 					</a>
 					<b class="arrow"></b>
 				</li>
@@ -281,7 +232,7 @@
 		</li>
 		<li class="">
 			<a href="#" class="dropdown-toggle">
-			<i class="menu-icon fa fa-tag"></i>
+			<i class="menu-icon fa fa-cog"></i>
 			<span class="menu-text"> Settings </span>
 			<b class="arrow fa fa-angle-down"></b>
 			</a>
@@ -304,18 +255,32 @@
 				<li class="">
 					<a href="pricing.html">
 					<i class="menu-icon fa fa-caret-right"></i>
-					Backup Database
+					Database
 					</a>
 					<b class="arrow"></b>
 				</li>
 				<li class="">
-					<a href="invoice.html">
+					<a href="pricing.html">
 					<i class="menu-icon fa fa-caret-right"></i>
-					Logout
+					Log Activity
+					</a>
+					<b class="arrow"></b>
+				</li>
+				<li class="">
+					<a href="<?= site_url('admin/user') ?>">
+					<i class="menu-icon fa fa-caret-right"></i>
+					QR Code
 					</a>
 					<b class="arrow"></b>
 				</li>
 			</ul>
+		</li>
+		<li class="">
+			<a href="">
+			<i class="menu-icon fa fa-question-circle" aria-hidden="true"></i>
+			<span class="menu-text"> Helps </span>
+			</a>
+			<b class="arrow"></b>
 		</li>
 	</ul>
 	<!-- /.nav-list -->

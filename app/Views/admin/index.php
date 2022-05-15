@@ -1,4 +1,78 @@
 <?= $this->extend('admin/layout') ?>
+<?= $this->section('head') ?>
+<style>
+  .card-box {
+  position: relative;
+  color: #fff;
+  padding: 20px 10px 40px;
+  margin: 0px 0px;
+  }
+  .card-box:hover {
+  text-decoration: none;
+  color: #f1f1f1;
+  }
+  .card-box:hover .icon i {
+  font-size: 100px;
+  transition: 1s;
+  -webkit-transition: 1s;
+  }
+  .card-box .inner {
+  padding: 5px 10px 0 10px;
+  }
+  .card-box h3 {
+  font-size: 27px;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+  white-space: nowrap;
+  padding: 0;
+  text-align: left;
+  }
+  .card-box p {
+  font-size: 15px;
+  }
+  .card-box .icon {
+  position: absolute;
+  top: auto;
+  bottom: 5px;
+  right: 5px;
+  z-index: 0;
+  font-size: 72px;
+  color: rgba(0, 0, 0, 0.15);
+  }
+  .card-box .card-box-footer {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  text-align: center;
+  padding: 3px 0;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-decoration: none;
+  }
+  .card-box:hover .card-box-footer {
+  background: rgba(0, 0, 0, 0.3);
+  }
+  .bg-blue {
+  background-color: #00c0ef !important;
+  }
+  .bg-green {
+  background-color: #00a65a !important;
+  }
+  .bg-orange {
+  background-color: #f39c12 !important;
+  }
+  .bg-red {
+  background-color: #d9534f !important;
+  }
+
+  #maps{
+    height: 500px;
+  }
+</style>
+<script src="<?= base_url('') ?>/leaflet/leaflet.js"></script>
+<link rel="stylesheet" href="<?= base_url('') ?>/leaflet/leaflet.css">
+<?= $this->endSection('') ?>
 <?= $this->section('content') ?>
 <div class="main-content">
   <div class="main-content-inner">
@@ -36,7 +110,7 @@
       <div class="row">
         <div class="col-xs-12">
           <!-- PAGE CONTENT BEGINS -->
-          <div class="alert alert-block alert-success">
+          <div class="alert alert-block alert-success" style="margin-bottom:15px">
             <button type="button" class="close" data-dismiss="alert">
             <i class="ace-icon fa fa-times"></i>
             </button>
@@ -48,54 +122,104 @@
               >
           </div>
           <div class="row">
-            <div class="col-sm-12 infobox-container">
-              <div class="space-2"></div>
-
-              <div class="infobox infobox-blue infobox-large" style="width: 270px;">
-                <div class="infobox-icon">
-                  <i class="ace-icon fa fa-line-chart"></i>
+            <div class="col-lg-3 col-sm-6">
+              <div class="card-box bg-blue">
+                <div class="inner">
+                  <h3> 13436 </h3>
+                  <p> Student Strength </p>
                 </div>
-
-                <div class="infobox-data">
-                  <div class="infobox-content" style="max-width: 200px">Total Number of Assets</div>
-                  <div class="infobox-content bigger-120"><?= number_format(10000) ?></div>
+                <div class="icon">
+                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                 </div>
-              </div>
-
-              <div class="infobox infobox-green infobox-large" style="width: 270px;">
-                <div class="infobox-icon">
-                  <i class="ace-icon fa fa-check"></i>
-                </div>
-                <div class="infobox-data">
-                  <div class="infobox-content" style="max-width: 200px">Total Asset Distributed</div>
-                  <div class="infobox-content bigger-120"><?= number_format(6000) ?></div>
-                </div>
-              </div>
-
-              <div class="infobox infobox-red infobox-large" style="width: 270px;">
-                <div class="infobox-icon">
-                  <i class="ace-icon fa fa-times"></i>
-                </div>
-
-                <div class="infobox-data">
-                  <div class="infobox-content" style="max-width: 200px">Total Asset to Distributed</div>
-                  <div class="infobox-content bigger-120"><?= number_format(3844) ?></div>
-                </div>
-              </div>
-              <div class="infobox infobox-pink infobox-large" style="width: 270px;">
-                <div class="infobox-icon">
-                  <i class="ace-icon fa fa-chain-broken"></i>
-                </div>
-
-                <div class="infobox-data">
-                  <div class="infobox-content" style="max-width: 200px">Total Assets Undefined</div>
-                  <div class="infobox-content bigger-120"><?= number_format(156) ?></div>
-                </div>
+                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div>
-
-            <div class="vspace-12-sm"></div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="card-box bg-green">
+                <div class="inner">
+                  <h3> ₹185358 </h3>
+                  <p> Today’s Collection </p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-money" aria-hidden="true"></i>
+                </div>
+                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="card-box bg-orange">
+                <div class="inner">
+                  <h3> 5464 </h3>
+                  <p> New Admissions </p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-user-plus" aria-hidden="true"></i>
+                </div>
+                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="card-box bg-red">
+                <div class="inner">
+                  <h3> 723 </h3>
+                  <p> Faculty Strength </p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-users"></i>
+                </div>
+                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
           </div>
+          <div class="row">
+            <div class="hr hr24 hr-dotted"></div>
+            <div class="col-sm-12">
+              <div class="widget-box">
+                <div class="widget-header widget-header-flat widget-header-small">
+                  <h5 class="widget-title">
+                    <i class="ace-icon fa fa-signal"></i>
+                    Grafik Jumlah Barang
+                  </h5>
+                </div>
+                <div class="widget-body" >
+                  <div class="widget-main">
+                    <canvas id="myChart" height="100px"></canvas>
+                  </div>
+                  <!-- /.widget-main -->
+                </div>
+                <!-- /.widget-body -->
+              </div>
+              <!-- /.widget-box -->
+            </div>
+            <!-- /.col -->
+            <!-- /.col -->
+          </div>
+
+          <div class="row">
+            <div class="hr hr24 hr-dotted"></div>
+            <div class="col-sm-12">
+              <div class="widget-box">
+                <div class="widget-header widget-header-flat widget-header-small">
+                  <h5 class="widget-title">
+                    <i class="ace-icon fa fa-signal"></i>
+                    Peta Politeknik Negeri Lhokseumawe
+                  </h5>
+                </div>
+                <div class="widget-body" >
+                  <div class="widget-main">
+                    <div id="maps"></div>
+                  </div>
+                  <!-- /.widget-main -->
+                </div>
+                <!-- /.widget-body -->
+              </div>
+              <!-- /.widget-box -->
+            </div>
+            <!-- /.col -->
+            <!-- /.col -->
+          </div>
+
+
           <!-- /.row -->
           <!-- PAGE CONTENT ENDS -->
         </div>
@@ -107,110 +231,50 @@
   </div>
 </div>
 <?= $this->endSection() ?>
+
 <?= $this->section('script') ?>
-<script src="<?= base_url('') ?>/template/assets/js/jquery-ui.custom.min.js"></script>
-<script src="<?= base_url('') ?>/template/assets/js/jquery.ui.touch-punch.min.js"></script>
-<script src="<?= base_url('') ?>/template/assets/js/jquery.easypiechart.min.js"></script>
-<script src="<?= base_url('') ?>/template/assets/js/jquery.sparkline.index.min.js"></script>
-<script src="<?= base_url('') ?>/template/assets/js/jquery.flot.min.js"></script>
-<script src="<?= base_url('') ?>/template/assets/js/jquery.flot.pie.min.js"></script>
-<script src="<?= base_url('') ?>/template/assets/js/jquery.flot.resize.min.js"></script>
-<script type="text/javascript">
-  jQuery(function($) {
-    $('.easy-pie-chart.percentage').each(function(){
-      var $box = $(this).closest('.infobox');
-      var barColor = $(this).data('color') || (!$box.hasClass('infobox-dark') ? $box.css('color') : 'rgba(255,255,255,0.95)');
-      var trackColor = barColor == 'rgba(255,255,255,0.95)' ? 'rgba(255,255,255,0.25)' : '#E2E2E2';
-      var size = parseInt($(this).data('size')) || 50;
-      $(this).easyPieChart({
-        barColor: barColor,
-        trackColor: trackColor,
-        scaleColor: false,
-        lineCap: 'butt',
-        lineWidth: parseInt(size/10),
-        animate: ace.vars['old_ie'] ? false : 1000,
-        size: size
-      });
-    });
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const labels = [
+    'Tanah',
+    'Peralatan dan Mesin',
+    'Gedung dan Bangunan',
+    'Jalan, Irigasi dan Jaringan',
+    'Aset Tetap Lainnya',
+    'Konstruksi dalam Pengerjaan',
+    'Aset Tak Berwujud',
+  ];
   
-    //flot chart resize plugin, somehow manipulates default browser resize event to optimize it!
-    //but sometimes it brings up errors with normal resize event handlers
-    $.resize.throttleWindow = false;
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Grafik Master Aset',
+      backgroundColor: 'rgb(30,144,255)',
+      borderColor: 'rgb(30,144,255)',
+      data: [0, 10, 5, 2, 20, 30, 45, 78],
+    }]
+  };
   
-    var placeholder = $('#piechart-placeholder').css({'width':'90%' , 'min-height':'150px'});
-    var data = [
-    { label: "Golongan Tanah",  data: 38.7, color: "#68BC31"},
-    { label: "Golongan Peralatan dan Mesin",  data: 12, color: "#2091CF"},
-    { label: "Golongan Gedung dan Bangunan",  data: 8.2, color: "#AF4E96"},
-    { label: "Golongan Jalan, Irigasi dan Jaringan",  data: 18.6, color: "#DA5430"},
-    { label: "Golongan Aset Tetap Lainnya",  data: 5, color: "#FEE074"},
-    { label: "Golongan Konstruksi dalam Pengerjaan",  data: 5, color: "#85b2c1"},
-    { label: "Golongan Aset Tak Berwujud",  data: 12.5, color: "#99ead6"},
-    ]
-    function drawPieChart(placeholder, data, position) {
-      $.plot(placeholder, data, {
-      series: {
-        pie: {
-          show: true,
-          tilt:0.8,
-          highlight: {
-            opacity: 0.25
-          },
-          stroke: {
-            color: '#fff',
-            width: 2
-          },
-          startAngle: 2
-        }
-      },
-      legend: {
-        show: true,
-        position: position || "ne",
-        labelBoxBorderColor: null,
-        margin:[-30,15]
-      }
-      ,
-      grid: {
-        hoverable: true,
-        clickable: true
-      }
-     })
-   }
-   drawPieChart(placeholder, data);
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {}
+  };
   
-   /**
-   we saved the drawing function and the data to redraw with different position later when switching to RTL mode dynamically
-   so that's not needed actually.
-   */
-   placeholder.data('chart', data);
-   placeholder.data('draw', drawPieChart);
-  
-  
-    //pie chart tooltip example
-    var $tooltip = $("<div class='tooltip top in'><div class='tooltip-inner'></div></div>").hide().appendTo('body');
-    var previousPoint = null;
-  
-    placeholder.on('plothover', function (event, pos, item) {
-    if(item) {
-      if (previousPoint != item.seriesIndex) {
-        previousPoint = item.seriesIndex;
-        var tip = item.series['label'] + " : " + item.series['percent']+'%';
-        $tooltip.show().children(0).text(tip);
-      }
-      $tooltip.css({top:pos.pageY + 10, left:pos.pageX + 10});
-    } else {
-      $tooltip.hide();
-      previousPoint = null;
-    }
-  
-   });
-  
-    /////////////////////////////////////
-    $(document).one('ajaxloadstart.page', function(e) {
-      $tooltip.remove();
-    });
-  
-  
-  })
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+
+<script>
+  var map = L.map('maps').setView({lat:5.1203, lon:97.1575}, 18);
+
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+     }).addTo(map);
+
+  var marker = L.marker([5.1203, 97.1575]).addTo(map)
+    .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
 </script>
 <?= $this->endSection() ?>

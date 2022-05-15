@@ -9,6 +9,9 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
+ini_set('memory_limit', '2048M');
+ini_set('max_execution_time', '600');
+
 /**
  * Class BaseController
  *
@@ -45,6 +48,7 @@ class BaseController extends Controller
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
+        register_ci_instance($this);
 
         // Preload any models, libraries, etc, here.
 

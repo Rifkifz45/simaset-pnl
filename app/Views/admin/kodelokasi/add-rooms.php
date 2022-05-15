@@ -1,5 +1,13 @@
 <?= $this->extend('admin/layout') ?>
 
+<?= $this->section('head') ?>
+<style>
+	 body{
+  overflow: scroll;
+  }
+</style>
+<?= $this->endSection() ?>
+
 <?= $this->section('content') ?>
 <div class="main-content">
 	<div class="main-content-inner">
@@ -111,8 +119,8 @@
 									<td><?= $value['rooms_area'] ?> m<sup>2</sup></td>
 									<td class="center">
 										<div class="hidden-sm hidden-xs btn-group">
-											<a data-toggle="modal" data-target="#editgedung" data-toggle="tooltip" rel="tooltip" data-placement="top" type="button" class="btn btn-xs btn-info" title="Edit"><i class="ace-icon fa fa-pencil bigger-120"></i></a>
-											<a data-toggle="modal" data-target="#deletegedung" data-toggle="tooltip" rel="tooltip" data-placement="top" type="button" class="btn btn-xs btn-danger" title="Delete"><i class="ace-icon fa fa-power-off bigger-120"></i></a>
+											<a data-toggle="modal" data-target="#editruangan<?php echo $value['rooms_id'] ?>" data-toggle="tooltip" rel="tooltip" data-placement="top" type="button" class="btn btn-xs btn-info" title="Edit"><i class="ace-icon fa fa-pencil bigger-120"></i></a>
+											<a data-toggle="modal" data-target="#deleteruangan<?php echo $value['rooms_id'] ?>" data-toggle="tooltip" rel="tooltip" data-placement="top" type="button" class="btn btn-xs btn-danger" title="Delete"><i class="ace-icon fa fa-power-off bigger-120"></i></a>
 										</div>
 									</td>
 								</tr>
@@ -163,6 +171,66 @@
             </div>
           </div>
           <!-- END MODAL TAMBAH -->
+
+           <!-- Modal Edit -->
+	          <?php foreach ($rooms as $key => $value) : ?>
+          <div class="modal" id="editruangan<?php echo $value['rooms_id'] ?>" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header bg-primary" style="padding: 1rem;">
+                  <h4 class="modal-title"><i class="fa fa-cog text-default"></i> Edit Data Gedung</h4>
+                </div>
+                <div class="modal-body">
+                  <form action="<?= site_url('admin/location-rooms/update') ?>" class="form-horizontal" method="POST">
+                    <div class="form-group">
+                      <label class="col-md-3 control-label">Kode Ruangan</label>
+                      <div class="col-md-7">
+                        <input type="text" name="rooms_id" required placeholder=" Masukan Kode Gedung" readonly value="<?= $value['rooms_id'] ?>" maxlength="2" pattern="[0-9]{2}" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-3 control-label">Nama Ruangan</label>
+                      <div class="col-md-7">
+                        <input value="<?= $value['rooms_name'] ?>" type="text" name="rooms_name" maxlength="50" required placeholder=" Nama Ruangan" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-3 control-label">Luas Ruangan</label>
+                      <div class="col-md-7">
+                        <input value="<?= $value['rooms_area'] ?>" type="text" name="rooms_area" maxlength="50" required placeholder=" Luas Area" class="form-control">
+                      </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <?php endforeach; ?>
+          <!-- End Modal Edit -->
+
+          <!-- Modal Delete -->
+          <?php foreach ($rooms as $key => $value) : ?>
+          <div id="deleteruangan<?php echo $value['rooms_id'] ?>" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header bg-danger" style="padding: 1rem;">
+							<h5 class="modal-title"><span class="label label-inverse"> # Delete</span> &nbsp; Are you sure you want to delete <u><?= $value['rooms_name'] ?></u> from Database?<span style="font-size: 14px; font-style: italic;"> Use at your own risk </span></h5>
+						</div>
+						<div class="modal-body" align="center">
+							<a href="<?= site_url('admin/location-rooms/delete/'.$value['rooms_id']) ?>" class="btn btn-danger">&nbsp; &nbsp;YES&nbsp; &nbsp;</a>
+						</div>
+						<div class="modal-footer">
+							<a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			 <?php endforeach; ?>
+          <!-- End Modal Delete -->
 					<!-- PAGE CONTENT ENDS -->
 				</div><!-- /.col -->
 			</div><!-- /.row -->
