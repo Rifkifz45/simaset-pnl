@@ -1,9 +1,8 @@
 <?= $this->extend('admin/layout') ?>
 
 <?= $this->section('head') ?>
-<style>
-   
-</style>
+<link rel="stylesheet" href="<?= base_url('') ?>/template/assets/css/dist/css/select2.css" />
+<link rel="stylesheet" href="<?= base_url('') ?>/template/assets/css/dist/css/select2-bootstrap.css" />
 <?= $this->endSection('') ?>
 
 <?= $this->section('content') ?>
@@ -55,7 +54,7 @@
                   </div>
                   <div class="pull-right tableTools-container"></div>
                </div>
-               <div class="space-4"></div>
+               <div class="space-2"></div>
                <div class="table-header">
                   <span class="text-left"><?= count($peralatan) ?> Data Available in field "Inventaris Peralatan"</span>
                </div>
@@ -98,16 +97,14 @@
 <?= $this->endSection() ?>
 <?= $this->section('script') ?>
 <!-- page specific plugin scripts -->
+<script src="<?= base_url('') ?>/template/assets/css/dist/js/select2.min.js"></script>
 <script src="<?= base_url('') ?>/template/assets/js/jquery.dataTables.min.js"></script>
 <script src="<?= base_url('') ?>/template/assets/js/jquery.dataTables.bootstrap.min.js"></script>
 <script src="<?= base_url('') ?>/template/assets/js/dataTables.buttons.min.js"></script>
-
-<script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.1/js/dataTables.fixedColumns.min.js"></script>
 
 <script src="<?= base_url('') ?>/template/assets/js/buttons.flash.min.js"></script>
 <script src="<?= base_url('') ?>/template/assets/js/buttons.html5.min.js"></script>
 <script src="<?= base_url('') ?>/template/assets/js/buttons.print.min.js"></script>
 <script src="<?= base_url('') ?>/template/assets/js/buttons.colVis.min.js"></script>
-<script src="<?= base_url('') ?>/template/assets/js/dataTables.select.min.js"></script>
 <?= $this->include('admin/inventarisperalatan/script.js') ?>
 <?= $this->endSection('') ?>

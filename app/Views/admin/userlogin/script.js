@@ -4,57 +4,22 @@
       });
 
    jQuery(function($) {
-      $('#id-input-file-1 , #id-input-file-2').ace_file_input({
-         no_file:'No File ...',
-         btn_choose:'Choose',
-         btn_change:'Change',
-         droppable:false,
-         onchange:null,
-         thumbnail:false //| true | large
-         //whitelist:'gif|png|jpg|jpeg'
-         //blacklist:'exe|php'
-         //onchange:''
-         //
-      });
-
-      var columns = [
-        { "mDataProp": "no","className": "text-center","bSortable": false },
-        { "mDataProp": "kode_barang", "className": "text-center"},
-        { "mDataProp": "nup", "className": "text-center"},
-        { "mDataProp": "nama_barang"},
-        { "mDataProp": "tgl_perolehan", "className": "text-center"},
-        { "mDataProp": "id_perolehan", "className": "text-center"},
-        { "mDataProp": "tercatat", "className": "text-center"},
-        { "mDataProp": "uraian_kondisi","className": "text-center"},
-        { "mDataProp": "nilai_perolehan"},
-        { "mDataProp": "action","className": "text-center","bSortable": false},
-        ];
-      
       //initiate dataTables plugin
       var myTable = $('#dynamic-table')
-      .wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+      //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
       .DataTable( {
          bAutoWidth: false,
-         "aoColumns": columns,
-         order: [],
+         "aoColumns": [
+           { "bSortable": false },
+           null, null, null, null, null, null,
+           { "bSortable": false }
+         ],
          "aaSorting": [],
          drawCallback: function () {
             $('[rel="tooltip"]').tooltip({trigger: "hover"});
-         },
-         "bServerSide": true,
-         "ajax": {
-            "url": "<?php echo site_url('admin/DI_inventaris_peralatan'); ?>",
-            "type": "POST"
-         },
-         error: function (request, status, error) {
-            alert(request.responseText);
-         },
-         "sScrollX": "100%",
-         "sScrollXInner": "120%",
-         "bScrollCollapse": true,
-         "iDisplayLength": 10
+         }
        });
-
+      
       $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
       
       new $.fn.dataTable.Buttons(myTable, {

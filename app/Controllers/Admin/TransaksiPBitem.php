@@ -16,7 +16,7 @@ class TransaksiPBitem Extends BaseController{
 	}
 
 	 public function detail($id){
-        $item = $this->MTransaksiPBitem->detailTransaksiPBitem();
+        $item = $this->MTransaksiPBitem->detailTransaksiPBitem($id);
         $penempatan = $this->MTransaksiPB
         				->join('tweb_lokasi', 'tweb_lokasi.id_lokasi = transaksi_penempatan.id_lokasi')
         				->join('tweb_gedung', 'tweb_gedung.id_gedung = tweb_lokasi.id_gedung')

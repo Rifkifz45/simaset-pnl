@@ -143,8 +143,7 @@
 									<th> Nama </th>
 									<th> Lantai </th>
 									<th> Keterangan </th>
-									<th> PJ </th>
-									<th> Foto </th>
+									<th> Qty Lokasi </th>
 									<th>
 										<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
 										Action
@@ -161,10 +160,19 @@
 									<td><?= $value['nama_gedung'] ?></td>
 									<td class="center"><?= $value['qty_lantai'] ?></td>
 									<td><?= $value['keterangan'] ?></td>
-									<td class="center"><i data-toggle="tooltip" data-placement="left" rel="tooltip" class="fa fa-info-circle" title="<?= $value['nama_pengguna'] ?>"></i></td>
-									<td class="center"><i class="fa fa-picture-o" aria-hidden="true"></i></td>
+									<td class="center">
+										<?php
+                      $db = \Config\Database::connect();
+                      $query = $db->table('tweb_lokasi')
+                      ->where(['id_gedung' => $value['id_gedung']]);
+                      echo $query->countAllResults();
+                      ?>
+									</td>
 									<td class="center">
 										<div class="btn-group">
+											<a data-toggle="modal" data-target="#detail<?= $value['id_gedung'] ?>" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Show" class="btn btn-xs btn-white">
+												<i class="ace-icon fa fa-eye"></i>
+											</a>
 											<a data-toggle="modal" data-target="" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Detail" class="btn btn-xs btn-success">
                        <i class="ace-icon glyphicon glyphicon-folder-open"></i>
                        </a>
@@ -184,6 +192,7 @@
 
 					<?= $this->include('admin/twebgedung/modal-add') ?>
 					<?= $this->include('admin/twebgedung/modal-edit') ?>
+					<?= $this->include('admin/twebgedung/modal-detail') ?>
 					<?= $this->include('admin/twebgedung/modal-delete') ?>
 					<!-- PAGE CONTENT ENDS -->
 				</div>

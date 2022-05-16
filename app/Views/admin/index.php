@@ -1,73 +1,96 @@
 <?= $this->extend('admin/layout') ?>
 <?= $this->section('head') ?>
 <style>
-  .card-box {
-  position: relative;
-  color: #fff;
-  padding: 20px 10px 40px;
-  margin: 0px 0px;
-  }
-  .card-box:hover {
-  text-decoration: none;
-  color: #f1f1f1;
-  }
-  .card-box:hover .icon i {
-  font-size: 100px;
-  transition: 1s;
-  -webkit-transition: 1s;
-  }
-  .card-box .inner {
-  padding: 5px 10px 0 10px;
-  }
+.bg-info{
+  background-color: #17a2b8;
+}
+
+.bg-success{
+  background-color: #28a745;
+}
+
+.bg-danger{
+  background-color: #dc3545;
+}
+
+.bg-warning{
+  background-color: #ffc107;
+}
+
+.card-box {
+    position: relative;
+    color: #fff;
+    padding: 20px 10px 40px;
+}
+.card-box:hover {
+    text-decoration: none;
+    color: #f1f1f1;
+}
+.card-box:hover .icon i {
+    font-size: 100px;
+    transition: 1s;
+    -webkit-transition: 1s;
+}
+.card-box .inner {
+    padding: 5px 10px 0 10px;
+}
+.card-box h3 {
+    font-size: 27px;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+    white-space: nowrap;
+    padding: 0;
+    text-align: left;
+}
+.card-box p {
+    font-size: 15px;
+}
+.card-box .icon {
+    position: absolute;
+    top: auto;
+    bottom: 5px;
+    right: 5px;
+    z-index: 0;
+    font-size: 72px;
+    color: rgba(0, 0, 0, 0.15);
+}
+.card-box .card-box-footer {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    text-align: center;
+    padding: 3px 0;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-decoration: none;
+}
+.card-box:hover .card-box-footer {
+    background: rgba(0, 0, 0, 0.3);
+}
+.bg-blue {
+    background-color: #00c0ef !important;
+}
+.bg-green {
+    background-color: #00a65a !important;
+}
+.bg-orange {
+    background-color: #f39c12 !important;
+}
+.bg-red {
+    background-color: #d9534f !important;
+}
   .card-box h3 {
-  font-size: 27px;
-  font-weight: bold;
-  margin: 0 0 8px 0;
-  white-space: nowrap;
-  padding: 0;
-  text-align: left;
-  }
-  .card-box p {
-  font-size: 15px;
-  }
-  .card-box .icon {
-  position: absolute;
-  top: auto;
-  bottom: 5px;
-  right: 5px;
-  z-index: 0;
-  font-size: 72px;
-  color: rgba(0, 0, 0, 0.15);
-  }
-  .card-box .card-box-footer {
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  text-align: center;
-  padding: 3px 0;
-  color: rgba(255, 255, 255, 0.8);
-  background: rgba(0, 0, 0, 0.1);
-  width: 100%;
-  text-decoration: none;
-  }
-  .card-box:hover .card-box-footer {
-  background: rgba(0, 0, 0, 0.3);
-  }
-  .bg-blue {
-  background-color: #00c0ef !important;
-  }
-  .bg-green {
-  background-color: #00a65a !important;
-  }
-  .bg-orange {
-  background-color: #f39c12 !important;
-  }
-  .bg-red {
-  background-color: #d9534f !important;
-  }
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    padding: 0;
+    white-space: nowrap;
+}
 
   #maps{
     height: 500px;
+    width: 100%;
   }
 </style>
 <script src="<?= base_url('') ?>/leaflet/leaflet.js"></script>
@@ -122,82 +145,58 @@
               >
           </div>
           <div class="row">
-            <div class="col-lg-3 col-sm-6">
-              <div class="card-box bg-blue">
-                <div class="inner">
-                  <h3> 13436 </h3>
-                  <p> Student Strength </p>
-                </div>
-                <div class="icon">
-                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                </div>
-                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="card-box bg-green">
-                <div class="inner">
-                  <h3> ₹185358 </h3>
-                  <p> Today’s Collection </p>
-                </div>
-                <div class="icon">
-                  <i class="fa fa-money" aria-hidden="true"></i>
-                </div>
-                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="card-box bg-orange">
-                <div class="inner">
-                  <h3> 5464 </h3>
-                  <p> New Admissions </p>
-                </div>
-                <div class="icon">
-                  <i class="fa fa-user-plus" aria-hidden="true"></i>
-                </div>
-                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="card-box bg-red">
-                <div class="inner">
-                  <h3> 723 </h3>
-                  <p> Faculty Strength </p>
-                </div>
-                <div class="icon">
-                  <i class="fa fa-users"></i>
-                </div>
-                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="hr hr24 hr-dotted"></div>
-            <div class="col-sm-12">
-              <div class="widget-box">
-                <div class="widget-header widget-header-flat widget-header-small">
-                  <h5 class="widget-title">
-                    <i class="ace-icon fa fa-signal"></i>
-                    Grafik Jumlah Barang
-                  </h5>
-                </div>
-                <div class="widget-body" >
-                  <div class="widget-main">
-                    <canvas id="myChart" height="100px"></canvas>
+              <div class="col-lg-3 col-sm-6">
+                  <div class="card-box bg-info" style="margin-bottom:10px; border-radius:5px ;">
+                      <div class="inner">
+                          <h3> <?= number_format(13436) ?> </h3>
+                          <p> Total Number of Assets </p>
+                      </div>
+                      <div class="icon">
+                          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                      </div>
+                      <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
-                  <!-- /.widget-main -->
-                </div>
-                <!-- /.widget-body -->
               </div>
-              <!-- /.widget-box -->
-            </div>
-            <!-- /.col -->
-            <!-- /.col -->
-          </div>
-
+              <div class="col-lg-3 col-sm-6">
+                  <div class="card-box bg-success" style="margin-bottom:10px; border-radius:5px ;">
+                      <div class="inner">
+                          <h3> <?= number_format(12873) ?> </h3>
+                          <p> Kondisi Baik </p>
+                      </div>
+                      <div class="icon">
+                          <i class="fa fa-money" aria-hidden="true"></i>
+                      </div>
+                      <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-sm-6">
+                  <div class="card-box bg-warning" style="margin-bottom:10px; border-radius:5px ;">
+                      <div class="inner">
+                          <h3> <?= number_format(23) ?> </h3>
+                          <p> Rusak Ringan </p>
+                      </div>
+                      <div class="icon">
+                          <i class="fa fa-user-plus" aria-hidden="true"></i>
+                      </div>
+                      <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-sm-6">
+                  <div class="card-box bg-danger" style="margin-bottom:10px; border-radius:5px ;">
+                      <div class="inner">
+                          <h3> <?= number_format(23) ?> </h3>
+                          <p> Rusak Berat </p>
+                      </div>
+                      <div class="icon">
+                          <i class="fa fa-user-plus" aria-hidden="true"></i>
+                      </div>
+                      <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                  </div>
+              </div>
+        </div>
+          <div class="space-4"></div>
           <div class="row">
-            <div class="hr hr24 hr-dotted"></div>
-            <div class="col-sm-12">
+            <div class="col-sm-12" style="width:100%">
               <div class="widget-box">
                 <div class="widget-header widget-header-flat widget-header-small">
                   <h5 class="widget-title">
@@ -233,48 +232,15 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  const labels = [
-    'Tanah',
-    'Peralatan dan Mesin',
-    'Gedung dan Bangunan',
-    'Jalan, Irigasi dan Jaringan',
-    'Aset Tetap Lainnya',
-    'Konstruksi dalam Pengerjaan',
-    'Aset Tak Berwujud',
-  ];
-  
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'Grafik Master Aset',
-      backgroundColor: 'rgb(30,144,255)',
-      borderColor: 'rgb(30,144,255)',
-      data: [0, 10, 5, 2, 20, 30, 45, 78],
-    }]
-  };
-  
-  const config = {
-    type: 'bar',
-    data: data,
-    options: {}
-  };
-  
-  const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  );
-</script>
+  var map = L.map('maps').setView({lat:5.1196371, lon:97.1566789}, 18);
 
-<script>
-  var map = L.map('maps').setView({lat:5.1203, lon:97.1575}, 18);
+  L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+}).addTo(map);
 
-  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-     }).addTo(map);
-
-  var marker = L.marker([5.1203, 97.1575]).addTo(map)
-    .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
+  var marker = L.marker([5.119659, 97.158658]).addTo(map)
+    .bindPopup('<b>Kantor Pusat Administrasi KPA.</b>');
 </script>
 <?= $this->endSection() ?>

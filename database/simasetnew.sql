@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 16, 2022 at 01:47 AM
+-- Generation Time: May 17, 2022 at 12:26 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -9593,9 +9593,8 @@ CREATE TABLE `transaksi_penempatan` (
 --
 
 INSERT INTO `transaksi_penempatan` (`idtransaksi_penempatan`, `id_lokasi`, `id_hak`, `tgl_penempatan`, `keterangan`, `dokumen`, `ukuran_dokumen`, `status_penempatan`, `jenis_transaksi`, `response`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-('PB000001', '2-L01-003', 'H02', '2022-05-14 06:41:55', 'sdsd', '1652596654_7c1d6dfa6d4ad20e5643.pdf', 14832, 'Rejected', 'DBR', '', '2022-05-14 06:44:28', 'Admin', NULL, NULL),
-('PB000002', '1-L01-001', 'H01', '2022-05-15 14:30:05', 'cxcx', 'default.pdf', 3, 'Accepted', 'DBL', 'OK', '2022-05-15 14:30:22', 'Admin', NULL, NULL),
-('PB000003', '2-L01-003', 'H01', '2022-05-15 14:53:41', 'ssds', 'default.pdf', 3, 'Pending', 'DBR', '', '2022-05-15 14:53:49', 'Admin', NULL, NULL);
+('PB000001', '1-L01-001', 'H01', '2022-05-16 04:29:16', 'dsds', 'default.pdf', 3, 'Accepted', 'DBL', 'dd', '2022-05-16 04:29:24', 'Admin', NULL, NULL),
+('PB000002', '2-L01-003', 'H01', '2022-05-16 04:29:55', 'dsds', 'default.pdf', 3, 'Rejected', 'DBL', '', '2022-05-16 04:30:05', 'Admin', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -9617,7 +9616,7 @@ CREATE TABLE `transaksi_penempatan_item` (
 --
 
 INSERT INTO `transaksi_penempatan_item` (`idtransaksi_penempatan_item`, `idtransaksi_penempatan`, `inventaris_peralatan_id`, `id_pengguna`, `id_hak`, `status_penempatan_item`) VALUES
-(17, 'PB000002', 1, 1, 'H01', '1');
+(25, 'PB000001', 1, 1, 'H02', '1');
 
 -- --------------------------------------------------------
 
@@ -9807,7 +9806,133 @@ INSERT INTO `tweb_asset` (`idtweb_asset`, `golongan`, `bidang`, `kelompok`, `sub
 (155, '2', '01', '02', '07', '001', 'Tanah usaha', ''),
 (156, '2', '01', '02', '07', '099', 'Tanah pertanian lainnya', ''),
 (157, '2', '01', '02', '099', '*', 'TANAH NON PERSIL LAINNYA', ''),
-(158, '2', '01', '02', '099', '099', 'Tanah Non Persil Lainnya', '');
+(158, '2', '01', '02', '099', '099', 'Tanah Non Persil Lainnya', ''),
+(159, '2', '01', '03', '*', '*', 'LAPANGAN', ''),
+(160, '2', '01', '03', '01', '*', 'TANAH LAPANGAN OLAH RAGA', ''),
+(161, '2', '01', '03', '01', '001', 'Tanah Lapangan Tenis', ''),
+(162, '2', '01', '03', '01', '002', 'Tanah Lapangan Basket', ''),
+(163, '2', '01', '03', '01', '003', 'Tanah Lapangan Badminton/Bulutangkis', ''),
+(164, '2', '01', '03', '01', '004', 'Tanah Lapangan Golf', ''),
+(165, '2', '01', '03', '01', '005', 'Tanah Lapangan Sepak Bola', ''),
+(166, '2', '01', '03', '01', '006', 'Tanah Lapangan Bola Volly', ''),
+(167, '2', '01', '03', '01', '007', 'Tanah Lapangan Sepak Takraw', ''),
+(168, '2', '01', '03', '01', '008', 'Tanah Lapangan Hockey', ''),
+(169, '2', '01', '03', '01', '009', 'Tanah Lapangan Pacuan Kuda', ''),
+(170, '2', '01', '03', '01', '010', 'Tanah Lapangan Balap Sepeda', ''),
+(171, '2', '01', '03', '01', '011', 'Tanah Lapangan Atletik', ''),
+(172, '2', '01', '03', '01', '012', 'Tanah Lapangan Softball', ''),
+(173, '2', '01', '03', '01', '013', 'Tanah Lapangan Tembak', ''),
+(174, '2', '01', '03', '01', '014', 'Tanah Lapangan Halang Rintang', ''),
+(175, '2', '01', '03', '01', '015', 'Tanah Lapangan Tembak Senjata Berat', ''),
+(176, '2', '01', '03', '01', '016', 'Tanah Lapangan Tembak Darat ke Udara', ''),
+(177, '2', '01', '03', '01', '099', 'Tanah Lapangan Lainnya', ''),
+(178, '2', '01', '03', '02', '*', 'TANAH LAPANGAN PARKIR', ''),
+(179, '2', '01', '03', '02', '001', 'Tanah Lapangan Parkir Konstruksi Beton', ''),
+(180, '2', '01', '03', '02', '002', 'Tanah Lapangan Parkir Konstruksi Aspal', ''),
+(181, '2', '01', '03', '02', '003', 'Tanah Lapangan Parkir Sirtu (Pasir Batu)', ''),
+(182, '2', '01', '03', '02', '004', 'Tanah Lapangan Parkir Konblok', ''),
+(183, '2', '01', '03', '02', '005', 'Tanah Lapangan Parkir Tanah Keras', ''),
+(184, '2', '01', '03', '02', '006', 'Tanah Lapangan Apel/Upacara', ''),
+(185, '2', '01', '03', '02', '099', 'Tanah Lapangan Parkir Lainnya', ''),
+(186, '2', '01', '03', '03', '*', 'TANAH LAPANGAN PENIMBUNAN BARANG', ''),
+(187, '2', '01', '03', '03', '001', 'Tanah Lapangan Penimbunan Barang Belum Diolah', ''),
+(188, '2', '01', '03', '03', '002', 'Tanah Lapangan Penimbunan Barang Jadi', ''),
+(189, '2', '01', '03', '03', '003', 'Tanah Lapangan Penimbunan Pembuangan Sampah', ''),
+(190, '2', '01', '03', '03', '004', 'Tanah Lapangan Penimbunan Bahan Bangunan', ''),
+(191, '2', '01', '03', '03', '005', 'Tanah Lapangan Penimbunan Barang Bukti', ''),
+(192, '2', '01', '03', '03', '006', 'Tanah Lapangan Penimbunan Barang Lainnya', ''),
+(193, '2', '01', '03', '03', '007', 'Tanah Lapangan Penimbunan Barang Konstruksi Beton', ''),
+(194, '2', '01', '03', '03', '008', 'Tanah Lapangan Penimbunan Barang Konstruksi Aspal', ''),
+(195, '2', '01', '03', '03', '009', 'Tanah Lapangan Penimbunan Barang Konstruksi Tanah', ''),
+(196, '2', '01', '03', '03', '099', 'Tanah Lapangan Penimbunan Lainnya', ''),
+(197, '2', '01', '03', '04', '*', 'TANAH LAPANGAN PEMANCAR DAN STUDIO ALAM', ''),
+(198, '2', '01', '03', '04', '001', 'Tanah Lapangan Pemancar TV/Radio/Radar', ''),
+(199, '2', '01', '03', '04', '002', 'Tanah Lapangan Studio Alam', ''),
+(200, '2', '01', '03', '04', '099', 'Tanah Lapangan Pemancar Lainnya', ''),
+(201, '2', '01', '03', '05', '*', 'TANAH LAPANGAN PENGUJIAN/PENGOLAHAN', ''),
+(202, '2', '01', '03', '05', '001', 'Tanah Lapangan Pengujian Kendaraan Bermotor', ''),
+(203, '2', '01', '03', '05', '002', 'Tanah Lapangan Pengolahan Bahan Bangunan', ''),
+(204, '2', '01', '03', '05', '099', 'Tanah Lapangan Pengujian Lainnya', ''),
+(205, '2', '01', '03', '06', '*', 'TANAH LAPANGAN TERBANG', ''),
+(206, '2', '01', '03', '06', '001', 'Tanah Lapangan Terbang Perintis', ''),
+(207, '2', '01', '03', '06', '002', 'Tanah Lapangan Terbang Komersial', ''),
+(208, '2', '01', '03', '06', '003', 'Tanah Lapangan Terbang Khusus/Militer', ''),
+(209, '2', '01', '03', '06', '004', 'Tanah Lapangan Terbang Olah Raga', ''),
+(210, '2', '01', '03', '06', '005', 'Tanah Lapangan Terbang Pendidikan', ''),
+(211, '2', '01', '03', '06', '006', 'Tanah Lapangan Terbang Latihan Penerjunan', ''),
+(212, '2', '01', '03', '06', '007', 'Tanah Lapangan Tembak Udara (Air Weapon Range/AWR)', ''),
+(213, '2', '01', '03', '06', '099', 'Tanah Lapangan Terbang Lainnya', ''),
+(214, '2', '01', '03', '07', '*', 'TANAH UNTUK JALAN', ''),
+(215, '2', '01', '03', '07', '001', 'Tanah Untuk Jalan Nasional', ''),
+(216, '2', '01', '03', '07', '002', 'Tanah Untuk Jalan Propinsi', ''),
+(217, '2', '01', '03', '07', '003', 'Tanah Untuk Jalan Kabupaten', ''),
+(218, '2', '01', '03', '07', '004', 'Tanah Untuk Jalan Kotamadya', ''),
+(219, '2', '01', '03', '07', '005', 'Tanah Untuk Jalan Desa', ''),
+(220, '2', '01', '03', '07', '006', 'Tanah Untuk Jalan Tol', ''),
+(221, '2', '01', '03', '07', '007', 'Tanah Untuk Jalan Kereta Api/Lori', ''),
+(222, '2', '01', '03', '07', '008', 'Tanah Untuk Jalan Landasan Pacu Pesawat Terbang', ''),
+(223, '2', '01', '03', '07', '009', 'Tanah Untuk Jalan Khusus/Komplek', ''),
+(224, '2', '01', '03', '07', '099', 'Tanah Untuk Jalan Lainnya', ''),
+(225, '2', '01', '03', '08', '*', 'TANAH UNTUK BANGUNAN AIR', ''),
+(226, '2', '01', '03', '08', '001', 'Tanah Untuk Bangunan Air Irigasi', ''),
+(227, '2', '01', '03', '08', '002', 'Tanah Untuk Bangunan Pengairan Pasang Surut', ''),
+(228, '2', '01', '03', '08', '003', 'Tanah Untuk Bangunan Pengembangan Rawa Dan Polder', ''),
+(229, '2', '01', '03', '08', '004', 'Tanah Untuk Bangunan Pengaman Sungai Dan Penanggulangan Bencana A', ''),
+(230, '2', '01', '03', '08', '005', 'Tanah Untuk Bangunan Pengembangan Sumber Air Dan Air Tanah', ''),
+(231, '2', '01', '03', '08', '006', 'Tanah Untuk Bangunan Air Bersih/Air Baku', ''),
+(232, '2', '01', '03', '08', '007', 'Tanah Untuk Bangunan Air Kotor', ''),
+(233, '2', '01', '03', '08', '008', 'Tanah Untuk Bangunan Hatchery', ''),
+(234, '2', '01', '03', '08', '099', 'Tanah Untuk Bangunan Air Lainnya', ''),
+(235, '2', '01', '03', '09', '*', 'TANAH UNTUK BANGUNAN INSTALASI', ''),
+(236, '2', '01', '03', '09', '001', 'Tanah Untuk Bangunan Instalasi Air Bersih/Air Baku', ''),
+(237, '2', '01', '03', '09', '002', 'Tanah Untuk Bangunan Instalasi Air Kotor/Air Limbah', ''),
+(238, '2', '01', '03', '09', '003', 'Tanah Untuk Bangunan Instalasi Pengolahan Sampah', ''),
+(239, '2', '01', '03', '09', '004', 'Tanah Untuk Bangunan Instalasi Pengolahan Bahan Bangunan', ''),
+(240, '2', '01', '03', '09', '005', 'Tanah Untuk Bangunan Instalasi Listrik', ''),
+(241, '2', '01', '03', '09', '006', 'Tanah Untuk Bangunan Instalasi Gardu Listrik', ''),
+(242, '2', '01', '03', '09', '007', 'Tanah Untuk Bangunan Instalasi Pengolahan Limbah', ''),
+(243, '2', '01', '03', '09', '008', 'Tanah Untuk Bangunan Instalasi Pertahanan', ''),
+(244, '2', '01', '03', '09', '099', 'Tanah Untuk Bangunan Instalasi Lainnya', ''),
+(245, '2', '01', '03', '10', '*', 'TANAH UNTUK BANGUNAN JARINGAN', ''),
+(246, '2', '01', '03', '10', '001', 'Tanah Untuk Bangunan Jaringan Air Bersih/Air Baku', ''),
+(247, '2', '01', '03', '10', '002', 'Tanah Untuk Bangunan Jaringan Komunikasi', ''),
+(248, '2', '01', '03', '10', '003', 'Tanah Untuk Bangunan Jaringan Listrik', ''),
+(249, '2', '01', '03', '10', '004', 'Tanah Untuk Bangunan Jaringan Gas/BBM', ''),
+(250, '2', '01', '03', '10', '099', 'Tanah Untuk Bangunan Jaringan Lainnya', ''),
+(251, '2', '01', '03', '11', '*', 'TANAH UNTUK BANGUNAN BERSEJARAH', ''),
+(252, '2', '01', '03', '11', '001', 'Tanah Untuk Monumen', ''),
+(253, '2', '01', '03', '11', '002', 'Tanah Untuk Tugu Peringatan', ''),
+(254, '2', '01', '03', '11', '003', 'Tanah Untuk Tugu Batas Wilayah', ''),
+(255, '2', '01', '03', '11', '004', 'Tanah Untuk Candi', ''),
+(256, '2', '01', '03', '11', '005', 'Tanah Untuk Bangunan Museum', ''),
+(257, '2', '01', '03', '11', '006', 'Tanah Untuk Bangunan Rumah Adat', ''),
+(258, '2', '01', '03', '11', '099', 'Tanah Untuk Bangunan Bersejarah Lainnya', ''),
+(259, '2', '01', '03', '12', '*', 'TANAH UNTUK MAKAM', ''),
+(260, '2', '01', '03', '12', '001', 'Tanah Untuk Makam Pahlawan', ''),
+(261, '2', '01', '03', '12', '002', 'Tanah Untuk Makam Muslim', ''),
+(262, '2', '01', '03', '12', '003', 'Tanah Untuk Makam Kristen', ''),
+(263, '2', '01', '03', '12', '004', 'Tanah Untuk Makam Hindu/Budha/China', ''),
+(264, '2', '01', '03', '12', '005', 'Tanah Untuk Makam Umum', ''),
+(265, '2', '01', '03', '12', '006', 'Tanah Untuk Makam Bersejarah', ''),
+(266, '2', '01', '03', '12', '099', 'Tanah Untuk Makam Lainnya', ''),
+(267, '2', '01', '03', '13', '*', 'TANAH UNTUK TAMAN', ''),
+(268, '2', '01', '03', '13', '001', 'Tanah Lapangan Taman Peralatan Perambuan Pantai', ''),
+(269, '2', '01', '03', '13', '002', 'Tanah Lapangan Taman Peralatan Meteo dan Geofisika', ''),
+(270, '2', '01', '03', '13', '099', 'Tanah Untuk Taman Lainnya', ''),
+(271, '2', '01', '03', '14', '*', 'TANAH UNTUK LATIHAN', ''),
+(272, '2', '01', '03', '14', '001', 'Tanah Untuk Latihan Tempur', ''),
+(273, '2', '01', '03', '14', '099', 'Tanah Untuk Latihan Lainnya', ''),
+(274, '2', '01', '03', '15', '*', 'TANAH DAERAH PERTAHANAN', ''),
+(275, '2', '01', '03', '15', '001', 'Tanah Untuk Pertahanan Pantai', ''),
+(276, '2', '01', '03', '15', '002', 'Tanah Untuk Benteng Pertahanan', ''),
+(277, '2', '01', '03', '15', '003', 'Tanah Daerah Pertahanan Pos PAMTAS', ''),
+(278, '2', '01', '03', '15', '099', 'Tanah Daerah Pertahanan Lainnya', ''),
+(279, '2', '01', '03', '16', '*', 'TANAH LAPANGAN PBB', ''),
+(280, '2', '01', '03', '16', '001', 'Tanah Lapangan Untuk Parade / Devile', ''),
+(281, '2', '01', '03', '16', '099', 'Tanah Lapangan PBB Lainnya', ''),
+(282, '2', '01', '03', '17', '001', 'Tanah Jalan Konsesi Jasa', ''),
+(283, '2', '01', '03', '99', '*', 'LAPANGAN LAINNYA', ''),
+(284, '2', '01', '03', '99', '099', 'Lapangan Lainnya', '');
 
 -- --------------------------------------------------------
 
@@ -9894,7 +10019,7 @@ CREATE TABLE `tweb_lokasi` (
 
 INSERT INTO `tweb_lokasi` (`id_lokasi`, `id_gedung`, `id_kategori_lokasi`, `id_pengguna`, `nama_lokasi`, `lantai`, `keterangan`, `foto`) VALUES
 ('1-L01-001', '1', 3, 5, 'Ruang 1', '1', '', ''),
-('2-L01-002', '2', 3, 1, 'Ruang 2', '3', '', ''),
+('2-L01-002', '2', 3, 1, 'Ruang 2', '1', '', ''),
 ('2-L01-003', '2', 6, 5, 'Laboratorium Elektronika Analog', '1', '', ''),
 ('2-L01-004', '2', 6, 1, 'Laboratorium Desain & Fabrikasi Elektronika', '1', '', '');
 
@@ -10012,7 +10137,7 @@ CREATE TABLE `user_login` (
   `nama_user` varchar(64) NOT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `level` enum('1','2','3','4') NOT NULL,
-  `status_akun` enum('0','1') DEFAULT NULL,
+  `status_akun` enum('0','1','2') DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `created_by` varchar(45) DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -10024,8 +10149,8 @@ CREATE TABLE `user_login` (
 --
 
 INSERT INTO `user_login` (`id`, `username`, `password`, `email`, `nama_user`, `phone`, `level`, `status_akun`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(1, 'admin', '202cb962ac59075b964b07152d234b70', '', '', '', '1', '1', NULL, NULL, NULL, NULL),
-(2, 'approver', '202cb962ac59075b964b07152d234b70', NULL, '', NULL, '2', '1', NULL, NULL, NULL, NULL);
+(1, 'admin', '202cb962ac59075b964b07152d234b70', 'dimamolodets@gmailvn.net', 'Anastasia Laksmiwati', '+62 814-8392-6644', '1', '1', '2022-04-20 08:41:50', NULL, NULL, NULL),
+(2, 'approver', '202cb962ac59075b964b07152d234b70', 'bellax0@aerobicservice.com', 'Cakrajiya Gunarto', '+62 861-3739-03031', '2', '1', '2022-04-30 08:42:01', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -10302,7 +10427,7 @@ ALTER TABLE `transaksi_mutasi_tmp`
 -- AUTO_INCREMENT for table `transaksi_penempatan_item`
 --
 ALTER TABLE `transaksi_penempatan_item`
-  MODIFY `idtransaksi_penempatan_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idtransaksi_penempatan_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `transaksi_penempatan_tmp`
@@ -10314,7 +10439,7 @@ ALTER TABLE `transaksi_penempatan_tmp`
 -- AUTO_INCREMENT for table `tweb_asset`
 --
 ALTER TABLE `tweb_asset`
-  MODIFY `idtweb_asset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `idtweb_asset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=285;
 
 --
 -- AUTO_INCREMENT for table `tweb_lokasi_kategori`

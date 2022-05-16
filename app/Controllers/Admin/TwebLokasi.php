@@ -5,6 +5,7 @@ use App\Models\Admin\MTwebLokasi;
 use App\Models\Admin\MTwebLokasiKategori;
 use App\Models\Admin\MTwebGedung;
 use App\Models\Admin\MTwebPengguna;
+use App\Models\Admin\MTransaksiPBitem;
 
 class TwebLokasi Extends BaseController{
     public function __construct()
@@ -13,6 +14,7 @@ class TwebLokasi Extends BaseController{
         $this->MTwebLokasiKategori = new MTwebLokasiKategori();
         $this->MTwebGedung         = new MTwebGedung();
         $this->MTwebPengguna       = new MTwebPengguna();
+        $this->MTransaksiPBitem    = new MTransaksiPBitem();
     }
 
     public function index()
@@ -44,14 +46,34 @@ class TwebLokasi Extends BaseController{
     }
 
     public function group($id){
+        $builder = $this->db->table('transaksi_penempatan_item');
+        $builder->join('inventaris_peralatan', 'inventaris_peralatan.id = transaksi_penempatan_item.inventaris_peralatan_id', 'LEFT');
+          $builder->join('transaksi_penempatan', 'transaksi_penempatan.idtransaksi_penempatan = transaksi_penempatan_item.idtransaksi_penempatan', 'LEFT');
+        $builder->selectCount('kode_barang','total_barang');
+        $builder->select('kode_barang');
+        $builder->groupBy('kode_barang');
+        $builder->where('id_lokasi', $id);
+        $group = $builder->get()->getResult();
+
         return view('admin/tweblokasi/detail-group',[
-            'id'    => $id
+            'group'    => $group,
+            'id'       => $id
         ]);
     }
 
     public function list($id){
+        $list = $this->MTransaksiPBitem
+        ->join('transaksi_penempatan', 'transaksi_penempatan.idtransaksi_penempatan = transaksi_penempatan_item.idtransaksi_penempatan', 'left')
+        ->join('inventaris_peralatan', 'inventaris_peralatan.id = transaksi_penempatan_item.inventaris_peralatan_id', 'left')
+        ->join('tweb_kondisi', 'tweb_kondisi.id_kondisi = inventaris_peralatan.id_kondisi', 'left')
+        ->join('tweb_pengguna', 'tweb_pengguna.id_pengguna = transaksi_penempatan_item.id_pengguna', 'left')
+        ->join('tweb_hak', 'tweb_hak.id_hak = transaksi_penempatan_item.id_hak', 'left')
+        ->join('tweb_lokasi', 'tweb_lokasi.id_lokasi = transaksi_penempatan.id_lokasi')
+        ->join('tweb_gedung', 'tweb_gedung.id_gedung = tweb_lokasi.id_gedung')
+        ->where('transaksi_penempatan.id_lokasi', $id)->findAll();
         return view('admin/tweblokasi/detail-list',[
-            'id'    => $id
+            'id'   => $id,
+            'list' => $list
         ]);
     }
 

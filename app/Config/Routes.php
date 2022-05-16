@@ -38,6 +38,8 @@ $routes->get('/', 'UserLogin::index');
 $routes->get('/page-login', 'UserLogin::pagelogin');
 $routes->post('login/proses', 'UserLogin::proses');
 
+
+// START CONTROLLER APPROVER
 $routes->group('approver', function($routes){
     $routes->get('/', 'Approver\approver::index');
 
@@ -54,6 +56,11 @@ $routes->group('approver', function($routes){
             $routes->get('/', 'Approver\DistInventarisRuangan::index');
         });
 });
+
+// END CONTROLLER APPROVER
+
+
+
 
 $routes->group('admin', function ($routes) {
     $routes->get('/', 'Admin\Admin::index');
@@ -181,6 +188,10 @@ $routes->group('admin', function ($routes) {
             $routes->post('create', 'Admin\TwebPenggunaKategori::create');
             $routes->post('update', 'Admin\TwebPenggunaKategori::update');
             $routes->get('delete/(:segment)', 'Admin\TwebPenggunaKategori::delete/$1');
+        });
+
+         $routes->group('user', function ($routes) {
+            $routes->get('/', 'Admin\UserLogin::index');
         });
 
          $routes->group('penempatantmp', function($routes){

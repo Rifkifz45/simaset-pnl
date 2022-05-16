@@ -230,7 +230,9 @@ $uri = new \CodeIgniter\HTTP\URI();
 				</li>
 			</ul>
 		</li>
-		<li class="">
+		<li class="
+		<?=(current_url()==site_url('admin/user')) ? 'active open':''?>
+		">
 			<a href="#" class="dropdown-toggle">
 			<i class="menu-icon fa fa-cog"></i>
 			<span class="menu-text"> Settings </span>
@@ -245,7 +247,7 @@ $uri = new \CodeIgniter\HTTP\URI();
 					</a>
 					<b class="arrow"></b>
 				</li>
-				<li class="">
+				<li class="<?=(current_url()==site_url('admin/user')) ? 'active':''?>">
 					<a href="<?= site_url('admin/user') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
 					User Management

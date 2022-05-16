@@ -98,33 +98,36 @@
 									<th> Kode Barang </th>
 									<th> NUP </th>
 									<th> Nama Barang </th>
-									<th> Merk / Type </th>
 									<th>
-										<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-										Action
+										<i class="ace-icon fa fa-clock-o bigger-110"></i>
+										Kondisi
 									</th>
 								</tr>
 							</thead>
 							<tbody>
+								<?php foreach ($list as $key => $value): ?>
 								<tr>
 									<td class="center">
-										#
+										<?= $key + 1 ?>
 									</td>
-									<td></td>
-									<td></td>
-									<td><i>NULL</i></td>
-									<td class="center"><i class="fa fa-picture-o" aria-hidden="true"></i></td>
+									<td><?= $value['kode_barang'] ?></td>
+									<td><?= $value['nup'] ?></td>
+									<td><b><?= $value['merk'] ?></b> <?= $value['nama_barang'] ?></td>
 									<td class="center">
-										<div class="btn-group">
-											<a data-toggle="tooltip" data-placement="top" rel="tooltip" title="Detail" class="btn btn-xs btn-success">
-												<i class="ace-icon glyphicon glyphicon-folder-open"></i>
-											</a>
-											<a data-toggle="modal" data-target="" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Edit" class="btn btn-xs btn-info">
-												<i class="ace-icon glyphicon glyphicon-edit"></i>
-											</a>
-										</div>
+										<?php
+										if ($value['uraian_kondisi'] == "Baik") {
+						                    echo '<span class="label label-success arrowed">'.$value['uraian_kondisi'].'</span>';
+						                }else if($value['uraian_kondisi'] == "Rusak Ringan"){
+						                    echo '<span class="label label-info arrowed-in-right arrowed">'.$value['uraian_kondisi'].'</span>';
+						                }else if ($value['uraian_kondisi'] == "Rusak Berat") {
+						                    echo '<span class="label label-danger arrowed-in"><i class="ace-icon fa fa-exclamation-triangle"></i>  '.$value['uraian_kondisi'].'</span>';
+						                }else{
+						                    echo '';
+						                }
+										?>
 									</td>
 								</tr>
+								<?php endforeach ?>
 							</tbody>
 						</table>
 					</div>
@@ -151,7 +154,7 @@
 			bAutoWidth: false,
 			"aoColumns": [
 			  { "bSortable": false },
-			  null, null, null, null,
+			  null, null, null,
 			  { "bSortable": false }
 			],
 			"aaSorting": [],

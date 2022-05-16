@@ -21,11 +21,12 @@ class MTransaksiPBitem extends Model
         }  
     }
 
-    public function detailTransaksiPBitem(){
+    public function detailTransaksiPBitem($id){
         $dt = $this->db->table($this->table)
         ->join('inventaris_peralatan', 'inventaris_peralatan.id = transaksi_penempatan_item.inventaris_peralatan_id', 'left')
         ->join('tweb_pengguna', 'tweb_pengguna.id_pengguna = transaksi_penempatan_item.id_pengguna', 'left')
         ->join('tweb_hak', 'tweb_hak.id_hak = transaksi_penempatan_item.id_hak', 'left')
+        ->where('idtransaksi_penempatan', $id)
         ->get()->getResult();
         return $dt;
     }

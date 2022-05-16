@@ -3,6 +3,11 @@
 <?= $this->section('head') ?>
 <link rel="stylesheet" href="<?= base_url('') ?>/template/assets/css/dist/css/select2.css" />
 <link rel="stylesheet" href="<?= base_url('') ?>/template/assets/css/dist/css/select2-bootstrap.css" />
+<style>
+	.btn-putih{
+		background-color: white;
+	}
+</style>
 <?= $this->endSection('') ?>
 
 <?= $this->section('content') ?>
@@ -139,12 +144,9 @@
 								<tr>
 									<th class="center"> # </th>
 									<th> Kode Lokasi </th>
-									<th> Nama </th>
-									<th> Letak </th>
+									<th width="360"> Nama Lokasi </th>
 									<th> Kategori </th>
-									<th> PJ </th>
 									<th> Qty Barang </th>
-									<th> Foto </th>
 									<th>
 										<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
 										Action
@@ -155,19 +157,27 @@
 								<?php foreach ($detail as $key => $value): ?>
 								<tr>
 									<td class="center">
-										#<?= $key + 1 ?>
+										<?= $key + 1 ?>
 									</td>
 									<td><?= $value->id_lokasi ?></td>
-									<td><?= $value->nama_lokasi ?></td>
-									<td>
-										<?= $value->nama_gedung . "<br> Lantai " . $value->lantai ?>
-									</td>
+									<td><b><?= $value->nama_gedung ?></b><br><?= $value->nama_lokasi . " ( Lantai " . $value->lantai . ")" ?></td>
 									<td><?= $value->nama_kategori_lokasi != "" ? $value->nama_kategori_lokasi : "<i>NULL</i>" ?></td>
-									<td class="center"><i data-toggle="tooltip" data-placement="left" rel="tooltip" class="fa fa-info-circle fa-lg" title="<?= $value->nama_pengguna ?>"></i></td>
-									<td><i>NULL</i></td>
-									<td class="center"><i class="fa fa-picture-o" aria-hidden="true"></i></td>
+									<td class="center">
+										<?php
+                      $db = \Config\Database::connect();
+                      $query = $db->table('transaksi_penempatan_item')
+                      ->join('transaksi_penempatan', 'transaksi_penempatan.idtransaksi_penempatan = transaksi_penempatan_item.idtransaksi_penempatan','right')
+                      ->where(['transaksi_penempatan.status_penempatan' => "Accepted"])
+                      ->where(['transaksi_penempatan.id_lokasi' => $value->id_lokasi])
+                      ->where(['transaksi_penempatan_item.status_penempatan_item' => "1"]);
+                      echo $query->countAllResults();
+                      ?>
+									</td>
 									<td class="center">
 										<div class="btn-group">
+											<a data-toggle="modal" data-target="#detail<?= $value->id_lokasi ?>" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Detail" class="btn btn-xs btn-white">
+                       <i class="ace-icon fa fa-eye"></i>
+                       </a>
 											<a href="<?= site_url('admin/lokasi/group/'.$value->id_lokasi) ?>" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Detail" class="btn btn-xs btn-success">
                        <i class="ace-icon glyphicon glyphicon-folder-open"></i>
                        </a>
@@ -186,6 +196,7 @@
 					</div>
 						<?= $this->include('admin/tweblokasi/modal-delete') ?>
 						<?= $this->include('admin/tweblokasi/modal-edit') ?>
+						<?= $this->include('admin/tweblokasi/modal-detail') ?>
 					<!-- PAGE CONTENT ENDS -->
 				</div>
 				<!-- /.col -->
@@ -262,7 +273,7 @@
 			bAutoWidth: false,
 			"aoColumns": [
 			  { "bSortable": false },
-			  null, null, null, null, null, null, null,
+			  null, null, null, null,
 			  { "bSortable": false }
 			],
 			"aaSorting": [],

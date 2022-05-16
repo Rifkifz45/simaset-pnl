@@ -13,7 +13,7 @@ $dataKode   = buatKode2("tweb_lokasi_kategori", "");
       <div class="modal-body">
         <form id="validation-form" action="<?= site_url('admin/lokasi-kategori/create') ?>" class="form-horizontal" method="POST">
            <div class="form-group">
-            <label for="id_kategori_lokasi" class="col-md-3 control-label">Nama Kategori : </label>
+            <label for="id_kategori_lokasi" class="col-md-3 control-label">ID Kategori : </label>
             <div class="col-md-7">
               <input type="text" id="id_kategori_lokasi" name="id_kategori_lokasi" required readonly value="<?= $dataKode ?>" placeholder=" Masukan ID Kategori dari Lokasi" class="form-control">
             </div>

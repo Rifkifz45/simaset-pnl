@@ -59,7 +59,9 @@ class TransaksiPB extends BaseController
         if ($update) {
         $detail = $this->db->table('transaksi_penempatan_item')
             ->join('transaksi_penempatan', 'transaksi_penempatan.idtransaksi_penempatan = transaksi_penempatan_item.idtransaksi_penempatan')
-            ->join('inventaris_peralatan', 'inventaris_peralatan.id = transaksi_penempatan_item.inventaris_peralatan_id')->get()->getResult();
+            ->join('inventaris_peralatan', 'inventaris_peralatan.id = transaksi_penempatan_item.inventaris_peralatan_id')
+            ->where('transaksi_penempatan_item.idtransaksi_penempatan', $id)
+            ->get()->getResult();
 
         foreach ($detail as $key => $value) {
             $tercatat = [
@@ -68,7 +70,7 @@ class TransaksiPB extends BaseController
 
             $this->db->table('inventaris_peralatan')->where('id', $value->id)->update($tercatat);
             $this->db->table('transaksi_penempatan_item')
-                ->where('idtransaksi_penempatan_item', $value->idtransaksi_penempatan_item)
+                ->where('idtransaksi_penempatan', $value->idtransaksi_penempatan)
                 ->delete(); 
         }
 

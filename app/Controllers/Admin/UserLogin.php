@@ -11,22 +11,10 @@ class UserLogin Extends BaseController{
 
 	public function index()
 	{
-		$pager = \Config\Services::pager();
-		$currentPage = $this->request->getVar('page') ? $this->request->getVar('page') : 1;
-		$keyword = $this->request->getVar('keyword');
+		$user = $this->MUserLogin->findAll();
 
-		if ($keyword) {
-			$user = $this->MUserLogin->search($keyword);
-		}else{
-			$user = $this->MUserLogin;
-		}
-
-		return view('admin/user/index', [
-			// 'users'		=> $this->UserModel->findAll()
-			'users'			=> $user->paginate(10),
-			'pager' 		=> $this->MUserLogin->pager,
-			'currentPage'	=> $currentPage,
-			'jumlahdata'	=> $this->MUserLogin->countAll()
+		return view('admin/userlogin/index',[
+			'user'	=>	$user
 		]);
 	}
 }

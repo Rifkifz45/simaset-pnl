@@ -96,33 +96,41 @@
 								<tr>
 									<th class="center"> # </th>
 									<th> Kode Barang </th>
-									<th> Nama </th>
+									<th> Nama Barang </th>
 									<th> Qty Barang </th>
-									<th>
-										<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+									<th width="30%">
+										<i class="ace-icon fa fa-clock-o bigger-110"></i>
 										Action
 									</th>
 								</tr>
 							</thead>
 							<tbody>
+								<?php foreach ($group as $key => $value): ?>
 								<tr>
 									<td class="center">
-										#
+										<?= $key + 1 ?>
 									</td>
-									<td></td>
-									<td><i>NULL</i></td>
-									<td class="center"><i class="fa fa-picture-o" aria-hidden="true"></i></td>
+									<td><?= $value->kode_barang ?></td>
+									<td>
+										<?php
+				                          $db = \Config\Database::connect();
+				                          $nama_barang = $db->table('inventaris_peralatan')->where(['kode_barang' => $value->kode_barang])->get()->getRow();
+				                          echo $nama_barang->nama_barang;
+				                        ?>
+									</td>
+									<td class="center"><?= $value->total_barang ?></td>
 									<td class="center">
 										<div class="btn-group">
-											<a data-toggle="tooltip" data-placement="top" rel="tooltip" title="Detail" class="btn btn-xs btn-success">
-												<i class="ace-icon glyphicon glyphicon-folder-open"></i>
+											<a data-toggle="tooltip" data-placement="top" rel="tooltip" title="Detail" class="btn btn-xs btn-white">
+												<i class="ace-icon glyphicon glyphicon-print"></i> Label Kecil
 											</a>
-											<a data-toggle="modal" data-target="" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Edit" class="btn btn-xs btn-info">
-												<i class="ace-icon glyphicon glyphicon-edit"></i>
+											<a data-toggle="modal" data-target="" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Edit" class="btn btn-xs btn-white">
+												<i class="ace-icon glyphicon glyphicon-print"></i> Label Besar
 											</a>
 										</div>
 									</td>
 								</tr>
+								<?php endforeach ?>
 							</tbody>
 						</table>
 					</div>
