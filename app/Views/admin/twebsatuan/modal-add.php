@@ -1,22 +1,20 @@
 <div class="modal" id="add" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header bg-primary" style="padding: 1rem;">
-        <h4 class="modal-title"><div class="text-left"><i class="fa fa-cog text-default"></i>&nbsp;Entry Data Satuan Barang</div></h4>
+        <div class="col-md-7">
+          <h4 class="modal-title"><div class="text-center">Entry Data Satuan Barang</div></h4>
+        </div>
+        <div class="col md-3">
+
+        </div>
       </div>
       <div class="modal-body">
         <form id="validation-form" action="<?= site_url('admin/satuan/create') ?>" class="form-horizontal" method="POST">
           <div class="form-group">
-            <label for="id_satuan" class="col-md-3 control-label">Kode Satuan : </label>
-            <div class="col-md-7">
-              <input autofocus type="text" id="id_satuan" name="id_satuan" required maxlength="3" class="form-control">
-            </div>
-          </div>
-
-          <div class="form-group">
             <label for="uraian_satuan" class="col-md-3 control-label">Uraian Satuan : </label>
             <div class="col-md-7">
-              <input id="uraian_satuan" type="text" value="*" name="uraian_satuan" required placeholder=" Kode Bidang berdasarkan inputan golongan" class="form-control">
+              <input autofocus id="uraian_satuan" type="text" name="uraian_satuan" required placeholder=" Uraian Satuan" class="form-control">
             </div>
           </div>
       </div>

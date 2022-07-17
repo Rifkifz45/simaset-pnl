@@ -1,19 +1,23 @@
 <?php
 namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
+use App\Models\Admin\MTwebPengguna;
 use App\Models\Admin\MTwebPenggunaKategori;
 
 class TwebPenggunaKategori Extends BaseController{
 	public function __construct()
 	{
 		$this->MTwebPenggunaKategori = new MTwebPenggunaKategori();
+		$this->MTwebPengguna         = new MTwebPengguna();
 	}
 
 	public function index()
 	{
 		$kategori    = $this->MTwebPenggunaKategori->getPenggunaKategori();
+		$pengguna    = $this->MTwebPengguna->getPengguna();
 		return view('admin/twebpenggunakategori/index',[
 			'kategori'		=> $kategori,
+			'pengguna'		=> $pengguna,
 		]);
 	}
 
@@ -24,7 +28,7 @@ class TwebPenggunaKategori Extends BaseController{
         ]);
 
         if ($simpan) {
-        	session()->setFlashdata('pesan', 'User Category data has been successfully created.');
+        	session()->setFlashdata('pesan', 'Data Pengguna Kategori has been successfully created.');
         	return $this->response->redirect(site_url('admin/pengguna-kategori'));
         }else{
         	echo "Gagal";
@@ -39,7 +43,7 @@ class TwebPenggunaKategori Extends BaseController{
         ], $id);
 
 		if ($update) {
-			session()->setFlashdata('pesan', 'User Category data has been successfully updated.');
+			session()->setFlashdata('pesan', 'Data Pengguna Kategori has been successfully updated.');
 			return redirect()->back();
 		}
 	}
@@ -48,7 +52,7 @@ class TwebPenggunaKategori Extends BaseController{
 		$delete = $this->MTwebPenggunaKategori->deletePenggunaKategori($id);
 
 		if ($delete) {
-			session()->setFlashdata('pesan', 'User Category data has been successfully deleted.');
+			session()->setFlashdata('pesan', 'Data Pengguna Kategori has been successfully deleted.');
 			return redirect()->back();
 		}else{
 			echo "Gagal Delete";

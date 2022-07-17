@@ -26,10 +26,6 @@
          drawCallback: function () {
             $('[rel="tooltip"]').tooltip({trigger: "hover"});
          },
-         "aaSorting": [],
-         drawCallback: function () {
-            $('[rel="tooltip"]').tooltip({trigger: "hover"});
-         },
          "bProcessing": true,
          "bServerSide": true,
          "ajax": {

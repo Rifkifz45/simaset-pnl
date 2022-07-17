@@ -8,10 +8,15 @@ $dataKode   = buatKode2("tweb_gedung", "");
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header bg-primary" style="padding: 1rem;">
-        <h4 class="modal-title"><div class="text-left"><i class="fa fa-cog text-default"></i>&nbsp;Entry Data Gedung</div></h4>
+        <div class="col-md-3">
+          <h4 class="modal-title"><div class="text-center">Entry Data Gedung</div></h4>
+        </div>
+        <div class="col md-7">
+
+        </div>
       </div>
       <div class="modal-body">
-        <form id="validation-form" action="<?= site_url('admin/gedung/create') ?>" class="form-horizontal" method="POST">
+        <form id="validation-form" action="<?= site_url('admin/gedung/create') ?>" class="form-horizontal" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label for="id_gedung" class="col-md-3 control-label">Kode Gedung : </label>
             <div class="col-md-7">
@@ -27,42 +32,42 @@ $dataKode   = buatKode2("tweb_gedung", "");
           </div>
 
            <div class="form-group">
-            <label for="qty_lantai" class="col-md-3 control-label">Qty Lantai: : </label>
+            <label for="latitude" class="col-md-3 control-label">Latitude : </label>
             <div class="col-md-7">
-              <select class="form-control" name="qty_lantai" id="qty_lantai" style="width:100%">
-        				<option value="" disabled selected>Pilih Lantai</option>
-        				<option value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        			</select>
+              <input id="latitude" type="text" name="latitude" required placeholder=" Masukan Latitude" class="form-control">
             </div>
           </div>
 
-           <div class="form-group">
-            <label for="id_pengguna" class="col-md-3 control-label">Penanggung Jawab: </label>
+          <div class="form-group">
+            <label for="longitude" class="col-md-3 control-label">Longitude : </label>
             <div class="col-md-7">
-              <select class="form-control" name="id_pengguna" id="id_pengguna" style="width:100%">
-				<option value="" disabled selected>Pilih Penanggung Jawab:</option>
-				<?php foreach ($pengguna as $key => $value): ?>
-					<option value="<?= $value['id_pengguna'] ?>"><?= $value['nama_pengguna'] ?></option>
-				<?php endforeach ?>
-			</select>
+              <input id="longitude" type="text" name="longitude" required placeholder=" Masukan Longitude" class="form-control">
             </div>
           </div>
 
-           <div class="form-group">
+          <div class="form-group">
             <label for="keterangan" class="col-md-3 control-label">Keterangan : </label>
             <div class="col-md-7">
-              <textarea class="form-control" name="keterangan" id="keterangan"></textarea>
+              <textarea placeholder="Keterangan" class="form-control" name="keterangan" id="keterangan"></textarea>
             </div>
           </div>
+
            <div class="form-group">
-            <label for="keterangan" class="col-md-3 control-label">Gambar : </label>
+            <label for="id_pengguna" class="col-md-3 control-label">Penanggung Jawab : </label>
             <div class="col-md-7">
-              <input type="file" id="id-input-file-2" name="foto" accept=".jpg,.png" /><div id="foto-error" class="help-block">Jika anda tidak menambahkan gambar gedung. Gambar default akan disediakan!</div>
+              <select class="form-control" name="id_pengguna" id="id_pengguna" style="width:100%">
+      				<option value="" disabled selected>Pilih Penanggung Jawab:</option>
+      				<?php foreach ($pengguna as $key => $value): ?>
+      					<option value="<?= $value['id_pengguna'] ?>"><?= $value['nama_pengguna'] ?></option>
+      				<?php endforeach ?>
+      			</select>
+            </div>
+          </div>
+
+           <div class="form-group">
+            <label for="foto_gedung" class="col-md-3 control-label">Gambar : </label>
+            <div class="col-md-7">
+              <input type="file" id="id-input-file-2" name="foto_gedung" accept=".jpg,.png" /><div id="foto-error" class="help-block">Jika anda tidak menambahkan gambar gedung. Gambar default akan disediakan!</div>
             </div>
           </div>
       </div>

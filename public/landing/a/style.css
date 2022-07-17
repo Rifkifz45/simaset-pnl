@@ -1,0 +1,84 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,500;1,300;1,500&display=swap');
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+body{
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 300;
+	font-size:1.5em;
+	background-color: #eee;
+}
+
+.top-header{
+	margin-top:0;
+	margin-bottom:20px;
+	padding:0 30px;
+}
+.header-portal .img-responsive{
+	width:100%;
+	padding:0px;
+	background-color: white;
+}
+.navbar{
+	margin-bottom: 0;
+}
+.navbar-default .navbar-nav>li>a{
+	color:#333;
+	font-size:0.9em;
+	font-weight: 300;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+	color:#000;
+	background-color:#cfebff;
+}
+
+.header h1{
+	font-size: 1.1em;
+	margin: 10px 0 0;
+}
+.header p{
+	margin:0px;
+	color:#545454;
+}
+.header>.alamat{
+	font-size:0.8em;
+}
+.navbar-default{
+	background-color:#FFF;
+	border:none;
+}
+.wrapper{
+	box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+	padding:0px;
+	background-color: white;
+}
+.artikel{
+	margin-bottom: 50px;
+}
+.content{
+	padding:30px;
+}
+.content h3{
+	font-size:1.4em;
+}
+.artikel_info{
+	color:#2b72d0;
+}
+.title{
+	border-bottom: 1px solid #eee;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+.pagination{
+	margin-top:30px;
+}
+.footer{
+	text-align: center;
+	border-top:1px solid #eee;
+	padding: 10px;
+	color:#595959;
+}

@@ -25,7 +25,7 @@ class TwebSatuan Extends BaseController{
         ]);
 
         if ($simpan) {
-        	session()->setFlashdata('pesan', 'Unit data has been successfully created.');
+        	session()->setFlashdata('pesan', 'Data Satuan berhasil ditambahkan!');
         	return $this->response->redirect(site_url('admin/satuan'));
         }else{
         	echo "Gagal";
@@ -40,7 +40,7 @@ class TwebSatuan Extends BaseController{
         ], $id);
 
 		if ($update) {
-			session()->setFlashdata('pesan', 'Unit data has been successfully updated.');
+			session()->setFlashdata('pesan', 'Data Satuan Berhasil diupdate!');
 			return redirect()->back();
 		}
 	}
@@ -49,7 +49,7 @@ class TwebSatuan Extends BaseController{
 		$delete = $this->MTwebSatuan->deleteSatuan($id);
 
 		if ($delete) {
-			session()->setFlashdata('pesan', 'Unit data has been successfully deleted.');
+			session()->setFlashdata('pesan', 'Data satuan berhasil dihapus!');
 			return redirect()->back();
 		}else{
 			echo "Gagal Delete";

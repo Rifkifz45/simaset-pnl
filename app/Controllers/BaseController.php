@@ -10,7 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
 ini_set('memory_limit', '2048M');
-ini_set('max_execution_time', '600');
+ini_set('max_execution_time', '2000');
 
 /**
  * Class BaseController
@@ -39,7 +39,7 @@ class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = ['math_helper', 'count_helper'];
+    protected $helpers = ['math_helper', 'count_helper', 'text'];
 
     /**
      * Constructor.

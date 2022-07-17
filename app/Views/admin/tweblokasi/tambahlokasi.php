@@ -104,7 +104,7 @@
 													<div id="form-message-success" class="mb-4">
 														Please fill out this field correctly!
 													</div>
-													<form action="<?= site_url('admin/lokasi/create') ?>" method="POST" id="contactForm" name="contactForm">
+													<form action="<?= site_url('admin/lokasi/create') ?>" method="POST" id="contactForm" name="contactForm" enctype="multipart/form-data">
 														<div class="row">
 															<div class="col-sm-12 col-xs-12">
 																<div class="form-group">
@@ -179,9 +179,9 @@
 															</div>
 															<div class="col-sm-12 col-xs-12">
 																<div class="form-group">
-																	<label for="foto">Gambar:</label>
+																	<label for="foto_lokasi">Gambar:</label>
 																	<label class="ace-file-input">
-																	<input type="file" id="id-input-file-2" name="foto" />
+																	<input type="file" id="id-input-file-2" name="foto_lokasi" />
 																</div>
 															</div>
 															<div class="col-md-12">

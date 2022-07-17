@@ -1,7 +1,7 @@
 <?php
   $db = \Config\Database::connect();
   $dataKode   = buatKode("transaksi_penempatan", "PB");
-  $tmp = "SELECT * FROM `transaksi_penempatan_tmp` LEFT JOIN `inventaris_peralatan` ON `inventaris_peralatan`.id=`transaksi_penempatan_tmp`.inventaris_peralatan_id WHERE `transaksi_penempatan_tmp`.idtransaksi_penempatan LIKE '".$dataKode."'";
+  $tmp = "SELECT * FROM `transaksi_penempatan_tmp` LEFT JOIN `inventaris_peralatan` ON `inventaris_peralatan`.idinventaris_peralatan=`transaksi_penempatan_tmp`.inventaris_peralatan_id WHERE `transaksi_penempatan_tmp`.idtransaksi_penempatan LIKE '".$dataKode."'";
   $query = $db->query($tmp)->getResult();
 
 foreach ($query as $key => $value) : ?>

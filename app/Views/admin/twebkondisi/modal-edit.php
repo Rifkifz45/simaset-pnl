@@ -1,9 +1,14 @@
 <?php foreach ($kondisi as $key => $value): ?>
 <div class="modal" id="edit<?= $value['id_kondisi'] ?>" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header bg-primary" style="padding: 1rem;">
-        <h4 class="modal-title"><div class="text-left"><i class="fa fa-cog text-default"></i>&nbsp;Entry Data Kondisi Barang</div></h4>
+        <div class="col-md-7">
+          <h4 class="modal-title"><div class="text-center">Update Data Satuan Barang</div></h4>
+        </div>
+        <div class="col md-3">
+
+        </div>
       </div>
       <div class="modal-body">
         <form id="validation-form" action="<?= site_url('admin/kondisi/update') ?>" class="form-horizontal" method="POST">

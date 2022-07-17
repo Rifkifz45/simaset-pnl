@@ -25,7 +25,7 @@ class Twebperolehan Extends BaseController{
         ]);
 
         if ($simpan) {
-        	session()->setFlashdata('pesan', 'Acquisition data has been successfully created.');
+        	session()->setFlashdata('pesan', 'Data Perolehan has been successfully created.');
         	return $this->response->redirect(site_url('admin/perolehan'));
         }else{
         	echo "Gagal";
@@ -40,7 +40,7 @@ class Twebperolehan Extends BaseController{
         ], $id);
 
 		if ($update) {
-			session()->setFlashdata('pesan', 'Acquisition data has been successfully updated.');
+			session()->setFlashdata('pesan', 'Data Perolehan has been successfully updated.');
 			return redirect()->back();
 		}
 	}
@@ -49,7 +49,7 @@ class Twebperolehan Extends BaseController{
 		$delete = $this->MTwebPerolehan->deletePerolehan($id);
 
 		if ($delete) {
-			session()->setFlashdata('pesan', 'Acquisition data has been successfully deleted.');
+			session()->setFlashdata('pesan', 'Data Perolehan has been successfully deleted.');
 			return redirect()->back();
 		}else{
 			echo "Gagal Delete";

@@ -2,11 +2,15 @@
 namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Models\Admin\MTransaksiPBtmp;
+use App\Models\Admin\MTransaksiPBitem;
+use App\Models\Admin\MInventarisPeralatan;
 
 class TransaksiPBtmp Extends BaseController{
 	public function __construct()
 	{
-		$this->MTransaksiPBtmp = new MTransaksiPBtmp();
+		$this->MTransaksiPBtmp      = new MTransaksiPBtmp();
+		$this->MInventarisPeralatan = new MInventarisPeralatan();
+		$this->MTransaksiPBitem     = new MTransaksiPBitem();
 	}
 
 	public function index()
@@ -19,23 +23,61 @@ class TransaksiPBtmp Extends BaseController{
 
 	public function create()
 	{
-        $simpan = $this->MTransaksiPBtmp->insertTransaksiPBtmp([
-            'golongan'          => $this->request->getVar('golongan'),
-            'bidang'            => $this->request->getVar('bidang'),
-            'kelompok'          => $this->request->getVar('kelompok'),
-            'sub_kelompok'      => $this->request->getVar('sub_kelompok'),
-            'sub_sub_kelompok'  => $this->request->getVar('sub_sub_kelompok'),
-            'uraian'            => $this->request->getVar('uraian'),
-            'keterangan'        => $this->request->getVar('keterangan'),
-        ]);
+		// PRIMARY ID DARI BARANG
+        $id              = $this->request->getVar('id');
+        $kode_barang     = $this->request->getVar('kode_barang');
+        $nup             = $this->request->getVar('nup');
+        
+        //ID TRANSAKSI
+        $idtransaksi_tmp = $this->request->getVar('kode');
+        
+        // ID PENGGUNA
+        $idpengguna      = $this->request->getVar('id_pengguna');
 
+        $data = $this->MInventarisPeralatan
+        	->where('kode_barang', $kode_barang)
+        	->where('nup', $nup)
+        	->first();
 
-        if ($simpan) {
-        	session()->setFlashdata('pesan', 'Category data has been successfully created.');
-        	return $this->response->redirect(site_url('admin/kategori'));
+        // JIKA TIDAK DITEMUKAN
+        if ($data == NULL) {
+        	echo "<script>alert(\"Data tidak ditemukan. Silahkan input terlebih dahulu pada menu data inventaris\"); window.history.back(); </script>";
         }else{
-        	echo "Gagal";
-        }
+	        // PERIKSA APAKAH BARANG SUDAH DITEMPATKAN
+	        $check2 = $this->MTransaksiPBitem
+	        		->where('idinventaris_peralatan', $data['idinventaris_peralatan'])
+	        		->where('status_penempatan_item', "0")
+	        		->findAll();
+
+	        if (($data['tercatat'] == "DBR") OR ($data['tercatat'] == "DBL") OR ($data['tercatat'] == "KIB")){
+	            $pesanError = "Kode Barang tidak dapat dipakai, karna <b> sudah Ditempatkan/ dipakai</b>!";
+	            return redirect()->to(site_url('admin/penempatan/new'))->with('error', $pesanError); 
+	        }else if (count($check2)>=1) {
+	        	$pesanError = "Kode Barang sedang menunggu persetujuan. Proses Dibatalkan untuk menghindari ketidaknormalan sistem!";
+	            return redirect()->to(site_url('admin/penempatan/new'))->with('error', $pesanError); 
+	        }else{
+	            $check = $this->MTransaksiPBtmp->where('inventaris_peralatan_id', $data['idinventaris_peralatan'])->findAll();
+
+	            // CEK APAKAH KODE SUDAH DIINPUT PADA TMP
+	            if (count($check) >= 1) {
+	                return redirect()->to(site_url('admin/penempatan/new'))->With('pesantmp', 'Kode Barang sudah di-Input, ganti dengan yang lain !'); 
+	            }else{
+	            // MASUKKAN DATABASE TMP
+	            $input = [
+					'idtransaksi_penempatan'  => $idtransaksi_tmp,
+					'inventaris_peralatan_id' => $data['idinventaris_peralatan'],
+					'id_pengguna'             => $idpengguna,
+	            ];
+	            $simpan = $this->MTransaksiPBtmp->insertTransaksiPBtmp($input);
+	            if ($simpan) {
+	            session()->setFlashdata('pesanberhasil', 'Data Berhasil Ditambahkan');
+	                return redirect()->to(site_url('admin/penempatan/new'))->withInput(); 
+	            }else{
+	                echo "Gagal";
+	            }
+	            }
+	        }
+	        }
 	}
 
 	public function update(){

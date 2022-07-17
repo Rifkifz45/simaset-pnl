@@ -6,8 +6,13 @@ foreach ($item as $key => $value): ?>
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header bg-primary" style="padding: 1rem;">
-        <h4 class="modal-title"><div class="text-left"><i class="fa fa-cog text-default"></i>&nbsp;Update Data Pengguna Barang</div></h4>
-      </div>
+            <div class="col-md-4">
+              <h4 class="modal-title"><div class="text-center">Update Item</div></h4>
+            </div>
+            <div class="col md-7">
+
+            </div>
+          </div>
       <div class="modal-body">
         <form id="validation-form" action="<?= site_url('admin/penempatanitem/update') ?>" class="form-horizontal" method="POST">
           <div class="form-group">

@@ -6,43 +6,25 @@ $uri = new \CodeIgniter\HTTP\URI();
 	<script type="text/javascript">
 		try{ace.settings.loadState('sidebar')}catch(e){}
 	</script>
-	<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-		<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-			<button class="btn btn-success">
-			<i class="ace-icon fa fa-signal"></i>
-			</button>
-			<button class="btn btn-info">
-			<i class="ace-icon fa fa-pencil"></i>
-			</button>
-			<button class="btn btn-warning">
-			<i class="ace-icon fa fa-users"></i>
-			</button>
-			<button class="btn btn-danger">
-			<i class="ace-icon fa fa-cogs"></i>
-			</button>
-		</div>
-		<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-			<span class="btn btn-success"></span>
-			<span class="btn btn-info"></span>
-			<span class="btn btn-warning"></span>
-			<span class="btn btn-danger"></span>
-		</div>
-	</div>
 	<!-- /.sidebar-shortcuts -->
 	<ul class="nav nav-list">
 		<li class="<?=(current_url()==site_url('admin')) ? 'active':''?>">
 			<a href="<?= site_url('admin') ?>">
-			<i class="menu-icon fa fa-tachometer"></i>
-			<span class="menu-text"> Dashboard </span>
+			<i class="menu-icon glyphicon glyphicon-home"></i>
+			<span class="menu-text"> Home </span>
 			</a>
 			<b class="arrow"></b>
 		</li>
+		<?php
+		$uri = new \CodeIgniter\HTTP\URI();
+		?>
 		<li class="
 		<?=(current_url() == site_url('admin/kategori')) ? 'active open':''?>
 		<?=(current_url() == site_url('admin/lokasi')) ? 'active open':''?>
 		<?=(current_url() == site_url('admin/lokasi/add')) ? 'active open':''?>
 		<?=(current_url() == site_url('admin/lokasi-kategori')) ? 'active open':''?>
 		<?=(current_url() == site_url('admin/gedung')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/gedung/add')) ? 'active open':''?>
 		<?=(current_url() == site_url('admin/kondisi')) ? 'active open':''?>
 		<?=(current_url() == site_url('admin/satuan')) ? 'active open':''?>
 		<?=(current_url() == site_url('admin/hak')) ? 'active open':''?>
@@ -51,7 +33,7 @@ $uri = new \CodeIgniter\HTTP\URI();
 		<?=(current_url() == site_url('admin/pengguna-kategori')) ? 'active open':''?>
 		">
 			<a href="#" class="dropdown-toggle">
-			<i class="menu-icon fa fa-pencil-square-o"></i>
+			<i class="menu-icon glyphicon glyphicon-edit"></i>
 			<span class="menu-text">
 			Data Store
 			</span>
@@ -71,6 +53,7 @@ $uri = new \CodeIgniter\HTTP\URI();
 				<?=(current_url() == site_url('admin/lokasi/add')) ? 'active':''?>
 				<?=(current_url() == site_url('admin/lokasi-kategori')) ? 'active':''?>
 				<?=(current_url() == site_url('admin/gedung')) ? 'active':''?>
+				<?=(current_url() == site_url('admin/gedung/add')) ? 'active':''?>
 				">
 					<a href="<?= site_url('admin/lokasi') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
@@ -122,7 +105,17 @@ $uri = new \CodeIgniter\HTTP\URI();
 		<li class="
 		<?=(current_url() == site_url('admin/inventaris')) ? 'active':''?>
 		<?=(current_url() == site_url('admin/inventaris_tanah')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/inventaris_tanah/add')) ? 'active':''?>
 		<?=(current_url() == site_url('admin/inventaris_peralatan')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/inventaris_peralatan/add')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/inventarisgedung')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/inventaris_gedung/add')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/inventaris_jalan')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/inventaris_jalan/add')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/inventaris_asset')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/inventaris_asset/add')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/inventaris_takberwujud')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/inventaris_takberwujud/add')) ? 'active':''?>
 		">
 			<a href="<?= site_url('admin/inventaris') ?>">
 			<i class="menu-icon glyphicon glyphicon-cloud"></i>
@@ -130,17 +123,24 @@ $uri = new \CodeIgniter\HTTP\URI();
 			</a>
 			<b class="arrow"></b>
 		</li>
-		<li class="">
-			<a href="#">
-			<i class="menu-icon fa fa-line-chart "></i>
+		<li class="
+		<?=(current_url() == site_url('admin/statistik-chart')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/statistik-group')) ? 'active':''?>
+		">
+			<a href="<?= site_url('admin/statistik-group') ?>">
+			<i class="menu-icon glyphicon glyphicon-stats"></i>
 			<span class="menu-text"> Statistik </span>
 			</a>
 			<b class="arrow"></b>
 		</li>
-		<li class="<?=(current_url() == site_url('admin/penempatan')) ? 'active open':''?>
-		<?=(current_url() == site_url('admin/penempatan/new')) ? 'active open':''?>">
+		<li class="
+		<?=(current_url() == site_url('admin/penempatan')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/penempatan/new')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/mutasi')) ? 'active open':''?>
+		<?=(current_url() == site_url('admin/mutasi/new')) ? 'active open':''?>
+		">
 			<a href="#" class="dropdown-toggle">
-			<i class="menu-icon fa fa-check-square-o"></i>
+			<i class="menu-icon glyphicon glyphicon-send"></i>
 			<span class="menu-text"> Transaksi </span>
 			<b class="arrow fa fa-angle-down"></b>
 			</a>
@@ -156,17 +156,13 @@ $uri = new \CodeIgniter\HTTP\URI();
 					</a>
 					<b class="arrow"></b>
 				</li>
-				<li class="">
+				<li class="
+				<?=(current_url() == site_url('admin/mutasi')) ? 'active':''?>
+				<?=(current_url() == site_url('admin/mutasi/new')) ? 'active':''?>
+				">
 					<a href="<?= site_url('admin/mutasi') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
 					Mutasi
-					</a>
-					<b class="arrow"></b>
-				</li>
-				<li class="">
-					<a href="<?= site_url('admin/user') ?>">
-					<i class="menu-icon fa fa-caret-right"></i>
-					Penghapusan
 					</a>
 					<b class="arrow"></b>
 				</li>
@@ -177,7 +173,7 @@ $uri = new \CodeIgniter\HTTP\URI();
 		<?=(current_url() == site_url('admin/inventaris_lainnya')) ? 'active open':''?>
 		">
 			<a href="#" class="dropdown-toggle">
-			<i class="menu-icon fa fa-codepen"></i>
+			<i class="menu-icon glyphicon glyphicon-level-up"></i>
 			<span class="menu-text"> Menu Interaktif </span>
 			<b class="arrow fa fa-angle-down"></b>
 			</a>
@@ -186,45 +182,14 @@ $uri = new \CodeIgniter\HTTP\URI();
 				<li class="<?=(current_url() == site_url('admin/inventaris_ruangan')) ? 'active':''?>">
 					<a href="<?= site_url('admin/inventaris_ruangan') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
-					D B R
+					List Barang Ruangan
 					</a>
 					<b class="arrow"></b>
 				</li>
 				<li class="<?=(current_url() == site_url('admin/inventaris_lainnya')) ? 'active':''?>">
 					<a href="<?= site_url('admin/inventaris_lainnya') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
-					D B L
-					</a>
-					<b class="arrow"></b>
-				</li>
-			</ul>
-		</li>
-		<li class="">
-			<a href="#" class="dropdown-toggle">
-			<i class="menu-icon fa fa-print"></i>
-			<span class="menu-text"> Report </span>
-			<b class="arrow fa fa-angle-down"></b>
-			</a>
-			<b class="arrow"></b>
-			<ul class="submenu">
-				<li class="">
-					<a href="profile.html">
-					<i class="menu-icon fa fa-caret-right"></i>
-					K I B
-					</a>
-					<b class="arrow"></b>
-				</li>
-				<li class="">
-					<a href="<?= site_url('admin/user') ?>">
-					<i class="menu-icon fa fa-caret-right"></i>
-					D B R
-					</a>
-					<b class="arrow"></b>
-				</li>
-				<li class="">
-					<a href="pricing.html">
-					<i class="menu-icon fa fa-caret-right"></i>
-					D B L
+					List Barang Lainnya
 					</a>
 					<b class="arrow"></b>
 				</li>
@@ -232,16 +197,20 @@ $uri = new \CodeIgniter\HTTP\URI();
 		</li>
 		<li class="
 		<?=(current_url()==site_url('admin/user')) ? 'active open':''?>
+		<?=(current_url()==site_url('admin/user-profile')) ? 'active open':''?>
+		<?=(current_url()==site_url('admin/backup-data')) ? 'active open':''?>
+		<?=(current_url()==site_url('admin/cetak-label')) ? 'active open':''?>
+		<?=(current_url()==site_url('admin/token')) ? 'active open':''?>
 		">
 			<a href="#" class="dropdown-toggle">
-			<i class="menu-icon fa fa-cog"></i>
+			<i class="menu-icon glyphicon glyphicon-cog"></i>
 			<span class="menu-text"> Settings </span>
 			<b class="arrow fa fa-angle-down"></b>
 			</a>
 			<b class="arrow"></b>
 			<ul class="submenu">
-				<li class="">
-					<a href="profile.html">
+				<li class="<?=(current_url()==site_url('admin/user-profile')) ? 'active':''?>">
+					<a href="<?= site_url('admin/user-profile') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
 					User Profile
 					</a>
@@ -254,33 +223,45 @@ $uri = new \CodeIgniter\HTTP\URI();
 					</a>
 					<b class="arrow"></b>
 				</li>
-				<li class="">
-					<a href="pricing.html">
+				<li class="<?=(current_url()==site_url('admin/backup-data')) ? 'active':''?>">
+					<a href="<?= site_url('admin/backup-data') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
 					Database
 					</a>
 					<b class="arrow"></b>
 				</li>
-				<li class="">
-					<a href="pricing.html">
-					<i class="menu-icon fa fa-caret-right"></i>
-					Log Activity
-					</a>
-					<b class="arrow"></b>
-				</li>
-				<li class="">
-					<a href="<?= site_url('admin/user') ?>">
+				<li class="<?=(current_url()==site_url('admin/cetak-label')) ? 'active':''?>">
+					<a href="<?= site_url('admin/cetak-label') ?>">
 					<i class="menu-icon fa fa-caret-right"></i>
 					QR Code
 					</a>
 					<b class="arrow"></b>
 				</li>
+				<li class="<?=(current_url()==site_url('admin/token')) ? 'active':''?>">
+					<a href="<?= site_url('admin/token') ?>">
+					<i class="menu-icon fa fa-caret-right"></i>
+					Set Token
+					</a>
+					<b class="arrow"></b>
+				</li>
 			</ul>
 		</li>
-		<li class="">
-			<a href="">
-			<i class="menu-icon fa fa-question-circle" aria-hidden="true"></i>
-			<span class="menu-text"> Helps </span>
+		<li class="
+		<?=(current_url() == site_url('admin/reports')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/reports/penempatan_periode')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/reports/penempatan_lokasi')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/reports/penempatan_bulan')) ? 'active':''?>
+
+		<?=(current_url() == site_url('admin/reports/mutasi_periode')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/reports/mutasi_lokasi')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/reports/mutasi_bulan')) ? 'active':''?>
+
+		<?=(current_url() == site_url('admin/reports/penempatan_ruangan')) ? 'active':''?>
+		<?=(current_url() == site_url('admin/reports/penempatan_lainnya')) ? 'active':''?>
+		">
+			<a href="<?= site_url('admin/reports') ?>">
+			<i class="menu-icon glyphicon glyphicon-file"></i>
+			<span class="menu-text"> Reports </span>
 			</a>
 			<b class="arrow"></b>
 		</li>

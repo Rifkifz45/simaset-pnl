@@ -9,17 +9,17 @@
           <div class="form-group">
             <label class="col-md-3 control-label">Import File : </label>
             <div class="col-md-7">
-              <input type="file" name="file_excel" id="id-input-file-2" accept=".xlsx,.xls" required />
+              <input type="file" name="file_excel" id="id-input-file-2" accept=".xlsx,.xls,.csv" required />
             </div>
           </div>
           <div class="form-group">
             <label for="bidang" class="col-md-3 control-label">Pilih Kategori : </label>
             <div class="col-md-7">
-              <select name="opsi" class="form-control" id="form-field-select-1" required>
+              <select name="opsi" class="form-control" id="opsi" required style="width: 100%;">
                 <option value="" selected disabled> Choose Option ..</option>
-                <option value="1">Peralatan Mesin TIK & Non TIK</option>
-                <option value="2">Alat Angkutan</option>
-                <option value="3">Alat Persenjataan</option>
+                <option value="1">Peralatan Mesin Non TIK, Alat Besar, Alat Senjata</option>
+                <option value="2">Peralatan Mesin Khusus TIK</option>
+                <option value="3">Alat Angkutan</option>
               </select>
             </div>
           </div>

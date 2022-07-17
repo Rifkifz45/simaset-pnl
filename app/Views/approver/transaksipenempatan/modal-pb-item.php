@@ -2,9 +2,14 @@
 <div id="detail" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title"><span class="label label-inverse"> # Detail Data</span> &nbsp; Detail Aset yang ingin ditempatkan</h5>
-			</div>
+			<div class="modal-header bg-primary" style="padding: 1rem;">
+	        <div class="col-md-3">
+	          <h4 class="modal-title"><div class="text-center">Detail Data Aset</div></h4>
+	        </div>
+	        <div class="col md-7">
+
+	        </div>
+	      </div>
 			<div class="modal-body">
 				<div>
 					<table id="table_item" class="table table-striped table-bordered table-hover">

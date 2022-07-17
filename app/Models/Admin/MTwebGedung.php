@@ -8,7 +8,7 @@ class MTwebGedung extends Model
     protected $table          = "tweb_gedung";
     protected $primaryKey     = 'id_gedung';
     protected $allowedFields  = [
-        'id_pengguna ', 'nama_gedung', 'qty_lantai', 'keterangan', 'foto'
+        'id_pengguna ', 'nama_gedung', 'latitude', 'longitude', 'keterangan', 'foto_gedung'
     ];
     protected $useTimestamps  = false;
 

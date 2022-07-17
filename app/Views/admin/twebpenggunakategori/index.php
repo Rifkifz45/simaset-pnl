@@ -24,15 +24,7 @@
 		</div>
 		<div class="page-content">
 			<?= $this->include('admin/configurejs') ?>
-			<div class="page-header">
-				<h1>
-					Data Store
-					<small>
-					<i class="ace-icon fa fa-angle-double-right"></i>
-					Data Gedung
-					</small>
-				</h1>
-			</div>
+			<div class="space-6"></div>
 
 			<div class="row">  
           <div class="col-md-6">
@@ -43,7 +35,7 @@
                               <i class="ace-icon glyphicon glyphicon-bookmark fa-4x"></i>
                           </div>
                           <div class="col-xs-6 text-right">
-                              <p class="announcement-heading" style="font-weight: bold; font-size: 24px; margin-bottom: 0px;">65</p>
+                              <p class="announcement-heading" style="font-weight: bold; font-size: 24px; margin-bottom: 0px;"><?= count($kategori) ?></p>
                               <p class="announcement-text">Total Kategori Pengguna</p>
                           </div>
                       </div>
@@ -68,7 +60,7 @@
                               <i class="ace-icon glyphicon glyphicon-user fa-4x"></i>
                           </div>
                           <div class="col-xs-6 text-right">
-                              <p class="announcement-heading" style="font-weight: bold; font-size: 24px; margin-bottom: 0px;">65</p>
+                              <p class="announcement-heading" style="font-weight: bold; font-size: 24px; margin-bottom: 0px;"><?= count($pengguna) ?></p>
                               <p class="announcement-text">Total Pengguna</p>
                           </div>
                       </div>
@@ -91,53 +83,80 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<!-- PAGE CONTENT BEGINS -->
-					<div class="clearfix">
-						<div class="pull-right" style="margin-left: 15px;">
-							<button data-toggle="modal" data-target="#add" class="btn btn-sm btn-primary">
-							<i class="ace-icon fa fa-plus-circle"></i> Add New
-							</button>
-						</div>
-						<div class="pull-right tableTools-container"></div>
-					</div>
-					<div class="space-4"></div>
-					<div class="table-header">
-						<span class="text-left"><?= count($kategori) ?> Data Available in field "Kategori Pengguna"</span>
-					</div>
-					<div>
-						<table id="dynamic-table" class="table table-striped table-bordered table-hover">
-							<thead>
-								<tr>
-									<th class="center" style="width:10%"> # </th>
-									<th> Nama </th>
-									<th style="width:20%">
-										<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-										Action
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php foreach ($kategori as $key => $value): ?>
-								<tr>
-									<td class="center">
-										#<?= $key + 1 ?>
-									</td>
-									<td><?= $value['nama_kategori_pengguna'] ?></td>
-									<td class="center">
-										<div class="btn-group">
-                       <a data-toggle="modal" data-target="#edit<?= $value['id_kategori_pengguna'] ?>" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Edit" class="btn btn-xs btn-info">
-                       <i class="ace-icon glyphicon glyphicon-edit"></i>
-                       </a>
-                       <a data-toggle="modal" data-target="#delete<?= $value['id_kategori_pengguna'] ?>" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Delete" class="btn btn-xs btn-danger">
-                       <i class="ace-icon glyphicon glyphicon-trash"></i>
-                       </a>
+					<?php if (!empty(session()->getFlashdata('pesan'))) : ?>
+               <div class="row">
+                  <div class="col-xs-12"> 
+                     <div class="alert alert-block alert-success">
+                        <button type="button" class="close" data-dismiss="alert">
+                           <i class="ace-icon fa fa-times"></i>
+                        </button>
+                        <p>
+                           <strong>
+                              <i class="ace-icon fa fa-check"></i>
+                              Well done!
+                           </strong>
+                           <?= session()->getFlashdata('pesan') ?>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <?php endif; ?>
+					<div class="row">
+              <div class="col-xs-12">
+                 <div class="widget-box">
+                    <div class="widget-header">
+                       <h4 class="widget-title">TWEB PENGGUNA KATEGORI</h4>
+                       <div class="widget-toolbar">
+                          <div class="pull-right" style="margin-left: 15px;">
+                             <button data-toggle="modal" data-target="#add" type="button" class="btn btn-sm btn-primary">
+                                <i class="ace-icon fa fa-plus-circle"></i> Add New
+                             </button>
+                          </div>
+                       </div>
                     </div>
-									</td>
-								</tr>
-								<?php endforeach ?>
-							</tbody>
-						</table>
-					</div>
+                    <div class="widget-body">
+                       <div class="widget-main">
+                          <div>
+                             <table id="dynamic-table" class="table table-striped table-bordered dataTable no-footer">
+                             <thead>
+																<tr>
+																	<th class="center" style="width:10%"> # </th>
+																	<th> Nama </th>
+																	<th style="width:20%">
+																		<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+																		Action
+																	</th>
+																</tr>
+															</thead>
+                             <tbody>
+                             <?php foreach ($kategori as $key => $value): ?>
+														<tr>
+															<td class="center">
+																<?= $key + 1 ?>
+															</td>
+															<td><?= $value['nama_kategori_pengguna'] ?></td>
+															<td class="center">
+                                <div class="action-buttons">
+                                   <a data-toggle="modal" data-target="#edit<?= $value['id_kategori_pengguna'] ?>" title="Edit" class="green" href="#">
+                                      <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                   </a>
 
+                                   <a data-toggle="modal" data-target="#delete<?= $value['id_kategori_pengguna'] ?>" title="Delete" class="red" href="#">
+                                      <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                   </a>
+                                </div>
+                             </td>
+														</tr>
+														<?php endforeach ?>
+                             </tbody>
+                          </table>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <!-- /.span -->
+           </div>
 					<?= $this->include('admin/twebpenggunakategori/modal-add') ?>
 					<?= $this->include('admin/twebpenggunakategori/modal-edit') ?>
 					<?= $this->include('admin/twebpenggunakategori/modal-delete') ?>
@@ -188,7 +207,7 @@
 			bAutoWidth: false,
 			"aoColumns": [
 			  { "bSortable": false },
-			  null, null, null, null,
+			  null,
 			  { "bSortable": false }
 			],
 			"aaSorting": [],

@@ -1,4 +1,16 @@
 <?= $this->extend('approver/layout') ?>
+<?= $this->section('head') ?>
+<style>
+  #maps{
+    height: 600px;
+    width: 100%;
+  }
+
+</style>
+<script src="<?= base_url('') ?>/leaflet/leaflet.js"></script>
+<link rel="stylesheet" href="<?= base_url('') ?>/leaflet/leaflet.css">
+<?= $this->endSection('') ?>
+
 <?= $this->section('content') ?>
 <div class="main-content">
   <div class="main-content-inner">
@@ -14,12 +26,7 @@
       <div class="nav-search" id="nav-search">
         <form class="form-search">
           <span class="input-icon">
-          <input
-            type="text"
-            placeholder="Search ..."
-            class="nav-search-input"
-            id="nav-search-input"
-            autocomplete="off"
+          <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off"
             />
           <i class="ace-icon fa fa-search nav-search-icon"></i>
           </span>
@@ -28,66 +35,21 @@
       <!-- /.nav-search -->
     </div>
     <div class="page-content">
-      <?= $this->include('approver/configurejs') ?>
-      <div class="page-header">
-        <h1>Dashboard <small> Overview / Stats </small></h1>
-      </div>
       <!-- /.page-header -->
       <div class="row">
         <div class="col-xs-12">
           <!-- PAGE CONTENT BEGINS -->
-          <div class="alert alert-block alert-success">
+          <div class="alert alert-block alert-success" style="margin-bottom:15px">
             <button type="button" class="close" data-dismiss="alert">
             <i class="ace-icon fa fa-times"></i>
             </button>
             <i class="ace-icon fa fa-check green"></i>
-            <strong>Welcome to SIMASET PNL Version 1.0</strong>
-            <small>
-            . Aplikasi Sistem Informasi Geografis Manajemen Aset Tetap pada
+            <strong>Welcome to SIMASET PNL Version 1.0.</strong>
+            <small> Aplikasi Sistem Informasi Geografis Manajemen Aset Tetap pada
             Politeknik Negeri Lhokseumawe</small
               >
-          </div>
-          <div class="row">
-            <div class="col-sm-12 infobox-container">
-              <div class="space-2"></div>
-              <div class="infobox infobox-blue infobox-large" style="width: 270px;">
-                <div class="infobox-icon">
-                  <i class="ace-icon fa fa-line-chart"></i>
-                </div>
-                <div class="infobox-data">
-                  <div class="infobox-content" style="max-width: 200px">Total Number of Assets</div>
-                  <div class="infobox-content bigger-120"><?= number_format(10000) ?></div>
-                </div>
-              </div>
-              <div class="infobox infobox-green infobox-large" style="width: 270px;">
-                <div class="infobox-icon">
-                  <i class="ace-icon fa fa-check"></i>
-                </div>
-                <div class="infobox-data">
-                  <div class="infobox-content" style="max-width: 200px">Total Asset Distributed</div>
-                  <div class="infobox-content bigger-120"><?= number_format(6000) ?></div>
-                </div>
-              </div>
-              <div class="infobox infobox-red infobox-large" style="width: 270px;">
-                <div class="infobox-icon">
-                  <i class="ace-icon fa fa-times"></i>
-                </div>
-                <div class="infobox-data">
-                  <div class="infobox-content" style="max-width: 200px">Total Asset to Distributed</div>
-                  <div class="infobox-content bigger-120"><?= number_format(3844) ?></div>
-                </div>
-              </div>
-              <div class="infobox infobox-pink infobox-large" style="width: 270px;">
-                <div class="infobox-icon">
-                  <i class="ace-icon fa fa-chain-broken"></i>
-                </div>
-                <div class="infobox-data">
-                  <div class="infobox-content" style="max-width: 200px">Total Assets Undefined</div>
-                  <div class="infobox-content bigger-120"><?= number_format(156) ?></div>
-                </div>
-              </div>
-            </div>
-            <div class="vspace-12-sm"></div>
+              <div class="space-6"></div>
+              <p class=""><button class="btn btn-sm btn-success">Download Manual Book</button></p>
           </div>
           <!-- /.row -->
           <!-- PAGE CONTENT ENDS -->

@@ -23,7 +23,7 @@
          <!-- /.nav-search -->
       </div>
       <div class="page-content">
-         <?= $this->include('admin/configurejs') ?>
+         <?= $this->include('approver/configurejs') ?>
          <div class="page-header">
             <h1>
                Menu Interactive
@@ -45,7 +45,7 @@
                </div>
                <div class="space-4"></div>
                <div class="table-header">
-                  <span class="text-left"><?= count($dbr) ?> Data Available in field "Daftar Barang Ruangan"</span>
+                  <span class="text-left">Data Available in field "Daftar Barang Ruangan"</span>
                </div>
                <div>
                   <table id="dynamic-table" class="table table-striped table-bordered table-hover">
@@ -55,7 +55,6 @@
                            <th> Kode Barang </th>
                            <th> NUP </th>
                            <th> Nama Barang </th>
-                           <th> Merk </th>
                            <th> Lokasi </th>
                            <th> Gambar </th>
                            <th>
@@ -65,23 +64,14 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <?php foreach ($dbr as $key => $value): ?>
+                     	<?php foreach ($dist_ruangan as $key => $value): ?>
                         <tr>
-                           <td class="center">
-                              #<?= $key + 1 ?>
-                           </td>
-                           <td><?= $value['kode_barang'] ?></td>
-                           <td><?= $value['nup'] ?></td>
-                           <td><?= $value['nama_barang'] ?></td>
-                           <td><?= $value['merk'] ?></td>
-                           <td><?= $value['nama_gedung'] ?> <b>(<?= $value['id_lokasi'] ?>)</b></td>
-                           <td class="center">
-                              <?php if (isset($value['foto'])){ ?>
-                                 Halo
-                              <?php }else{ ?>
-                                 <button class="btn btn-xs btn-white"><i class="fa fa-upload"></i> Upload</button>
-                              <?php } ?>
-                           </td>
+                           <td class="center" style="vertical-align: middle;"><?= $key + 1 ?></td>
+                           <td class="center" style="vertical-align: middle;"><?= $value->kode_barang ?></td>
+                           <td class="center" style="vertical-align: middle;"><?= $value->nup ?></td>
+                           <td><b><?= $value->merk ?></b> <br> <?= $value->nama_barang ?></td>
+                           <td><?= $value->nama_lokasi . " (" . $value->nama_gedung . ") " . "<br><b>" . $value->id_lokasi ?></b></td>
+                           <td class="center"><i class="fa fa-picture-o"></i></td>
                            <td class="center">
                               <div class="btn-group">
                                 <a data-toggle="modal" data-target="#edit" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Edit" class="btn btn-xs btn-white">

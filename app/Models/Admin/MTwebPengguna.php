@@ -8,7 +8,7 @@ class MTwebPengguna extends Model
     protected $table          = "tweb_pengguna";
     protected $primaryKey     = 'id_pengguna';
     protected $allowedFields  = [
-        'id_kategori_pengguna','nama_pegawai','nip','foto'
+        'id_kategori_pengguna','nama_pegawai','nip','pangkat','golongan','jabatan','foto_pengguna'
     ];
     protected $useTimestamps  = false;
 

@@ -2,7 +2,7 @@
  $id_pengguna = 0;
  $db = \Config\Database::connect();
  $dataKode   = buatKode("transaksi_penempatan", "PB");
- $tmp = "SELECT * FROM `transaksi_penempatan_tmp` LEFT JOIN `inventaris_peralatan` ON `inventaris_peralatan`.id=`transaksi_penempatan_tmp`.inventaris_peralatan_id WHERE `transaksi_penempatan_tmp`.idtransaksi_penempatan LIKE '".$dataKode."'";
+ $tmp = "SELECT * FROM `transaksi_penempatan_tmp` LEFT JOIN `inventaris_peralatan` ON `inventaris_peralatan`.idinventaris_peralatan=`transaksi_penempatan_tmp`.inventaris_peralatan_id WHERE `transaksi_penempatan_tmp`.idtransaksi_penempatan LIKE '".$dataKode."'";
  $query = $db->query($tmp)->getResult();
 
 foreach ($query as $key => $value): ?>  
@@ -10,7 +10,12 @@ foreach ($query as $key => $value): ?>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header bg-primary" style="padding: 1rem;">
-        <h4 class="modal-title"><div class="text-left"><i class="fa fa-cog text-default"></i>&nbsp;Update Data Pengguna Barang</div></h4>
+        <div class="col-md-5">
+          <h4 class="modal-title"><div class="text-center">Update Pengguna Barang</div></h4>
+        </div>
+        <div class="col md-5">
+
+        </div>
       </div>
       <div class="modal-body">
         <form id="validation-form" action="<?= site_url('admin/penempatantmp/update') ?>" class="form-horizontal" method="POST">

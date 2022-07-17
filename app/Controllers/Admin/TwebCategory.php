@@ -26,22 +26,40 @@ class TwebCategory Extends BaseController{
             return DataTable::of($builder)
             ->addNumbering('no')
             ->add('action', function($row){
-		        return '<a data-toggle="modal" data-target="#edit'.$row->idtweb_asset.'" data-toggle="tooltip" data-placement="top" rel="tooltip" type="button" title="Edit" class="btn btn-xs btn-info"><i class="ace-icon glyphicon glyphicon-edit"></i> </a>
-		        <a data-toggle="modal" data-target="#delete'.$row->idtweb_asset.'" data-toggle="tooltip" data-placement="top" rel="tooltip" type="button" title="Delete" class="btn btn-xs btn-danger"><i class="ace-icon glyphicon glyphicon-trash"></i> </a>';
+            	return '
+            	<div class="hidden-sm hidden-xs action-buttons">
+            	<a class="green" href='.site_url('admin/kategori/edit/'.$row->idtweb_asset).' >
+            		<i class="ace-icon fa fa-pencil bigger-130"></i>
+            	</a>
+
+            	<a class="red" href="'.site_url('admin/kategori/delete/'.$row->idtweb_asset).'" onclick="if (confirm(\'Yakin ingin menghapus data '.$row->uraian.' ?\')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+            		<i class="ace-icon fa fa-trash-o bigger-130"></i>
+            	</a>
+            	</div>';
 		    })
             ->toJson(true);
         }
 	}
 
+	public function edit($id){
+		$kategori = $this->MTwebCategory->find($id);
+		return view('admin/twebkategori/edit_kategori',[
+			'kategori' => $kategori
+		]);
+	}
+
 	public function index()
 	{
-		$kategori   = $this->MTwebCategory
-		->orderBy('golongan', 'asc')
-		->orderBy('bidang', 'asc')
-		->orderBy('kelompok', 'asc')
-		->orderBy('sub_kelompok', 'asc')
-		->orderBy('sub_sub_kelompok', 'asc')
-		->getKategori();
+		$kategori  = $this->db->table('tweb_asset')
+			->select('idtweb_asset,golongan,bidang,kelompok,sub_kelompok,sub_sub_kelompok,uraian, keterangan')
+			->orderBy('golongan', 'asc')
+			->orderBy('bidang', 'asc')
+			->orderBy('kelompok', 'asc')
+			->orderBy('sub_kelompok', 'asc')
+			->orderBy('sub_sub_kelompok', 'asc')
+			->get()
+			->getResultArray();
+
 		return view('admin/twebkategori/index',[
 			'kategori'		=> $kategori,
 		]);
@@ -68,7 +86,7 @@ class TwebCategory Extends BaseController{
 
 
         if ($simpan) {
-        	session()->setFlashdata('pesan', 'Category data has been successfully created.');
+        	session()->setFlashdata('pesan', 'Data Kategori Berhasil Ditambahkan!');
         	return $this->response->redirect(site_url('admin/kategori'));
         }else{
         	echo "Gagal";
@@ -89,7 +107,7 @@ class TwebCategory Extends BaseController{
         ], $id);
 
 		if ($update) {
-			session()->setFlashdata('pesan', 'Category data has been successfully updated.');
+			session()->setFlashdata('pesan', 'Data Kategori Berhasil Diupdate!');
 			return redirect()->back();
 		}
 	}
@@ -98,7 +116,7 @@ class TwebCategory Extends BaseController{
 		$delete = $this->MTwebCategory->deleteKategori($id);
 
 		if ($delete) {
-			session()->setFlashdata('pesan', 'Category data has been successfully deleted.');
+			session()->setFlashdata('pesan', 'Data Kategori Berhasil Didelete!');
 			return redirect()->back();
 		}else{
 			echo "Gagal Delete";

@@ -1,6 +1,7 @@
 <?= $this->extend('admin/layout') ?>
 
 <?= $this->section('head') ?>
+<link rel="stylesheet" href="<?= base_url('') ?>/magnific/dist/magnific-popup.css">
 <link rel="stylesheet" href="<?= base_url('') ?>/template/assets/css/dist/css/select2.css" />
 <link rel="stylesheet" href="<?= base_url('') ?>/template/assets/css/dist/css/select2-bootstrap.css" />
 <style>
@@ -19,7 +20,7 @@
 					<i class="ace-icon fa fa-home home-icon"></i>
 					<a href="#">Home</a>
 				</li>
-				<li class="active">Location</li>
+				<li class="active">Lokasi</li>
 			</ul>
 			<!-- /.breadcrumb -->
 			<div class="nav-search" id="nav-search">
@@ -34,15 +35,7 @@
 		</div>
 		<div class="page-content">
 			<?= $this->include('admin/configurejs') ?>
-			<div class="page-header">
-				<h1>
-					Data Store
-					<small>
-					<i class="ace-icon fa fa-angle-double-right"></i>
-					Data Lokasi
-					</small>
-				</h1>
-			</div>
+			<div class="space-6"></div>
 
 			<div class="row">  
           <div class="col-md-4">
@@ -103,7 +96,7 @@
                               <i class="ace-icon glyphicon glyphicon-map-marker fa-4x"></i>
                           </div>
                           <div class="col-xs-6 text-right">
-                              <p class="announcement-heading" style="font-weight: bold; font-size: 24px; margin-bottom: 0px;"><?= count($lokasi) ?></p>
+                              <p class="announcement-heading" style="font-weight: bold; font-size: 24px; margin-bottom: 0px;"><?= ($lokasi) ?></p>
                               <p class="announcement-text">Total Lokasi</p>
                           </div>
                       </div>
@@ -126,77 +119,82 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<!-- PAGE CONTENT BEGINS -->
-					<div class="clearfix">
-						<div class="pull-right" style="margin-left: 15px;">
-							<a class="btn btn-sm btn-primary" href="<?= site_url('admin/lokasi/add') ?>">
-							<i class="ace-icon fa fa-plus-circle"></i> Add New
-							</a>
-						</div>
-						<div class="pull-right tableTools-container"></div>
-					</div>
-					<div class="space-4"></div>
-					<div class="table-header">
-						<span class="text-left"><?= count($lokasi) ?> Data Available in field "Lokasi"</span>
-					</div>
-					<div>
-						<table id="dynamic-table" class="table table-striped table-bordered table-hover">
-							<thead>
-								<tr>
-									<th class="center"> # </th>
-									<th> Kode Lokasi </th>
-									<th width="360"> Nama Lokasi </th>
-									<th> Kategori </th>
-									<th> Qty Barang </th>
-									<th>
-										<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-										Action
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php foreach ($detail as $key => $value): ?>
-								<tr>
-									<td class="center">
-										<?= $key + 1 ?>
-									</td>
-									<td><?= $value->id_lokasi ?></td>
-									<td><b><?= $value->nama_gedung ?></b><br><?= $value->nama_lokasi . " ( Lantai " . $value->lantai . ")" ?></td>
-									<td><?= $value->nama_kategori_lokasi != "" ? $value->nama_kategori_lokasi : "<i>NULL</i>" ?></td>
-									<td class="center">
-										<?php
-                      $db = \Config\Database::connect();
-                      $query = $db->table('transaksi_penempatan_item')
-                      ->join('transaksi_penempatan', 'transaksi_penempatan.idtransaksi_penempatan = transaksi_penempatan_item.idtransaksi_penempatan','right')
-                      ->where(['transaksi_penempatan.status_penempatan' => "Accepted"])
-                      ->where(['transaksi_penempatan.id_lokasi' => $value->id_lokasi])
-                      ->where(['transaksi_penempatan_item.status_penempatan_item' => "1"]);
-                      echo $query->countAllResults();
-                      ?>
-									</td>
-									<td class="center">
-										<div class="btn-group">
-											<a data-toggle="modal" data-target="#detail<?= $value->id_lokasi ?>" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Detail" class="btn btn-xs btn-white">
-                       <i class="ace-icon fa fa-eye"></i>
-                       </a>
-											<a href="<?= site_url('admin/lokasi/group/'.$value->id_lokasi) ?>" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Detail" class="btn btn-xs btn-success">
-                       <i class="ace-icon glyphicon glyphicon-folder-open"></i>
-                       </a>
-                       <a data-toggle="modal" data-target="#edit<?= $value->id_lokasi ?>" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Edit" class="btn btn-xs btn-info">
-                       <i class="ace-icon glyphicon glyphicon-edit"></i>
-                       </a>
-                       <a data-toggle="modal" data-target="#delete<?= $value->id_lokasi ?>" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Delete" class="btn btn-xs btn-danger">
-                       <i class="ace-icon glyphicon glyphicon-trash"></i>
-                       </a>
+					<div class="row">
+              <div class="col-xs-12">
+                 <div class="widget-box">
+                    <div class="widget-header">
+                       <h4 class="widget-title">TWEB LOKASI</h4>
+                       <div class="widget-toolbar">
+                          <button type="button" data-toggle="modal" data-target="#add" class="btn btn-minier btn-primary">
+                          <i class="ace-icon fa fa-plus-circle"></i> Add New
+                          </button>
+                       </div>
                     </div>
-									</td>
-								</tr>
-								<?php endforeach ?>
-							</tbody>
-						</table>
-					</div>
-						<?= $this->include('admin/tweblokasi/modal-delete') ?>
-						<?= $this->include('admin/tweblokasi/modal-edit') ?>
-						<?= $this->include('admin/tweblokasi/modal-detail') ?>
+                    <div class="widget-body">
+                       <div class="widget-main">
+                          <div>
+                             <table id="dynamic-table" class="table table-striped table-bordered dataTable no-footer">
+                                <thead>
+																<tr>
+																	<th class="center"> # </th>
+																	<th> Kode </th>
+																	<th> Nama </th>
+																	<th> Kategori </th>
+																	<th> Lokasi </th>
+																	<th> Foto </th>
+																	<th>
+																		<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+																		Action
+																	</th>
+																</tr>
+															</thead>
+                              <tbody>
+                              <?php foreach ($detail as $key => $value): ?>
+															<tr>
+																<td class="center">
+																	<?= $key + 1 ?>
+																</td>
+																<td><?= $value->id_lokasi ?></td>
+																<td><b><?= $value->nama_lokasi ?></b></td>
+																<td><?= $value->nama_kategori_lokasi != "" ? $value->nama_kategori_lokasi : "<i>NULL</i>" ?></td>
+																<td>
+																	<?= "(<b>" . $value->id_gedung . "</b>) " . $value->nama_gedung . " (Lantai " . $value->lantai . ")" ?>
+																</td>
+																<td class="center">
+																	<a href="<?= site_url('uploads/lokasi/'.$value->foto_lokasi) ?>" class="image-link">
+																	   <img width="100px" src="<?= site_url('uploads/lokasi/'.$value->foto_lokasi) ?>" />
+																</td>
+																<td class="center">
+																<div class="action-buttons">
+																	<a class="blue" href="<?= site_url('admin/lokasi/group/'.$value->id_lokasi) ?>">
+																		<i class="ace-icon fa fa-search-plus bigger-130"></i>
+																	</a>
+
+																	<a href="#" class="green" data-toggle="modal" data-target="#edit<?= $value->id_lokasi ?>">
+																		<i class="ace-icon fa fa-pencil bigger-130"></i>
+																	</a>
+
+																	<a data-toggle="modal" data-target="#delete<?= $value->id_lokasi ?>" class="red" href="#">
+																		<i class="ace-icon fa fa-trash-o bigger-130"></i>
+																	</a>
+																</div>
+															</td>
+															</tr>
+															<?php endforeach ?>
+                                </tbody>
+                             </table>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <!-- /.span -->
+           </div>
+					
+
+					<?= $this->include('admin/tweblokasi/modal-add') ?>
+					<?= $this->include('admin/tweblokasi/modal-edit') ?>
+					<?= $this->include('admin/tweblokasi/modal-delete') ?>
 					<!-- PAGE CONTENT ENDS -->
 				</div>
 				<!-- /.col -->
@@ -218,8 +216,30 @@
 <script src="<?= base_url('') ?>/template/assets/js/buttons.html5.min.js"></script>
 <script src="<?= base_url('') ?>/template/assets/js/buttons.print.min.js"></script>
 <script src="<?= base_url('') ?>/template/assets/js/buttons.colVis.min.js"></script>
+<script src="<?= base_url('') ?>/magnific/dist/jquery.magnific-popup.js"></script>
 <script type="text/javascript">
 	jQuery(function($) {
+		$('.image-link').magnificPopup({
+			type: 'image',
+			mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+
+			zoom: {
+			enabled: true, // By default it's false, so don't forget to enable it
+			duration: 300, // duration of the effect, in milliseconds
+			easing: 'ease-in-out', // CSS transition easing function
+
+    // The "opener" function should return the element from which popup will be zoomed in
+    // and to which popup will be scaled down
+    // By defailt it looks for an image tag:
+    opener: function(openerElement) {
+      // openerElement is the element on which popup was initialized, in this case its <a> tag
+      // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+      return openerElement.is('img') ? openerElement : openerElement.find('img');
+    }
+  }
+
+});
+		
 		$(document).on('shown.bs.modal', function (e) {
         $('[autofocus]', e.target).focus();
       });
@@ -237,7 +257,19 @@
 			//
 		});
 
-		let jumlah = <?= count($lokasi) ?>;
+		$("#id_gedung_modal").select2({
+		    theme: "bootstrap"
+		});
+
+		$("#lantai").select2({
+		    theme: "bootstrap"
+		});
+
+		$("#id_kategori_lokasi").select2({
+		    theme: "bootstrap"
+		});
+
+		let jumlah = <?= $lokasi ?>;
 		for (let i = 0; i <= jumlah; i++) {
 			$("#lantai" + i).select2({
 				theme: "bootstrap"
@@ -273,13 +305,17 @@
 			bAutoWidth: false,
 			"aoColumns": [
 			  { "bSortable": false },
-			  null, null, null, null,
+			  null, null, null, null, 
+			  { "bSortable": false },
 			  { "bSortable": false }
 			],
 			"aaSorting": [],
 			drawCallback: function () {
 				$('[rel="tooltip"]').tooltip({trigger: "hover"});
-			}
+			},
+			select: {
+						style: 'multi'
+					}
 	    });
 		
 		$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';

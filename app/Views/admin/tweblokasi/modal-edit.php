@@ -10,14 +10,20 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header bg-primary" style="padding: 1rem;">
-        <h4 class="modal-title"><div class="text-left"><i class="fa fa-cog text-default"></i>&nbsp;Update Data Lokasi</div></h4>
+        <div class="col-md-3">
+          <h4 class="modal-title"><div class="text-center">Update Data Lokasi</div></h4>
+        </div>
+        <div class="col md-7">
+
+        </div>
       </div>
       <div class="modal-body">
-        <form id="validation-form" action="<?= site_url('admin/lokasi/update') ?>" class="form-horizontal" method="POST">
+        <form action="<?= site_url('admin/lokasi/update') ?>" class="form-horizontal" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label for="id_lokasi" class="col-md-3 control-label">Kode Lokasi : </label>
             <div class="col-md-7">
-              <input value="<?= $value->id_lokasi ?>" type="text" id="id_lokasi" name="id_lokasi" class="form-control" readonly>
+              <input id="id_lokasi" type="text" value="<?= $value->id_lokasi; ?>" name="id_lokasi" required readonly placeholder=" ID Lokasi" class="form-control">
+              <input type="hidden" name="fotoLama" id="fotoLama" value="<?= $value->foto_lokasi ?>">
             </div>
           </div>
 
@@ -25,6 +31,13 @@
             <label for="nama_lokasi" class="col-md-3 control-label">Nama Lokasi : </label>
             <div class="col-md-7">
               <input onfocus="this.setSelectionRange(this.value.length,this.value.length);" autofocus id="nama_lokasi" type="text" value="<?= $value->nama_lokasi; ?>" name="nama_lokasi" required placeholder=" Nama Lokasi" class="form-control">
+            </div>
+          </div>
+
+            <div class="form-group">
+            <label for="luas_lokasi" class="col-md-3 control-label">Luas Lokasi : </label>
+            <div class="col-md-7">
+              <input id="luas_lokasi" type="text" name="luas_lokasi" required placeholder=" Masukan Luas Lokasi" value="<?= $value->luas_lokasi ?>" class="form-control">
             </div>
           </div>
 
@@ -44,15 +57,16 @@
             <?php $id_lantai = $id_lantai + 1 ?>
             <select id="lantai<?= $id_lantai ?>" class="form-control" name="lantai" id="lantai" style="width:100%">
               <option value="" selected disabled>Pilih Lantai</option>
-              <option value="1" <?= $value->lantai == "1" ? "selected" : null ?>>1</option>
-              <option value="2" <?= $value->lantai == "2" ? "selected" : null ?>>2</option>
-              <option value="3" <?= $value->lantai == "3" ? "selected" : null ?>>3</option>
-              <option value="4" <?= $value->lantai == "4" ? "selected" : null ?>>4</option>
-              <option value="5" <?= $value->lantai == "5" ? "selected" : null ?>>5</option>
-              <option value="6" <?= $value->lantai == "6" ? "selected" : null ?>>6</option>
+              <option value="01" <?= $value->lantai == "01" ? "selected" : null ?>>1</option>
+              <option value="02" <?= $value->lantai == "02" ? "selected" : null ?>>2</option>
+              <option value="03" <?= $value->lantai == "03" ? "selected" : null ?>>3</option>
+              <option value="04" <?= $value->lantai == "04" ? "selected" : null ?>>4</option>
+              <option value="05" <?= $value->lantai == "05" ? "selected" : null ?>>5</option>
+              <option value="06" <?= $value->lantai == "06" ? "selected" : null ?>>6</option>
             </select>
           </div>
-           <div class="col-md-1">
+
+          <div class="col-md-1">
             <?php
               $lokasi = $value->id_lokasi;
               $lokasi = substr($lokasi, -3);
@@ -88,9 +102,9 @@
     		</div>
 
        <div class="form-group">
-        <label for="foto" class="col-md-3 control-label">Ganti Gambar : </label>
+        <label for="foto_lokasi" class="col-md-3 control-label">Ganti Gambar : </label>
         <div class="col-md-7">
-          <input type="file" id="id-input-file-2" name="foto" />
+          <input type="file" id="id-input-file-2" name="foto_lokasi" />
           <div id="foto-error" class="help-block">Jika anda mengganti gambar lokasi ini. Gambar lokasi awal akan dihapus dan tidak tersedia lagi!</div>
         </div>
       </div>

@@ -11,9 +11,14 @@
          bAutoWidth: false,
          "aoColumns": [
            { "bSortable": false },
-           null, null,
+           null, null, null,
            { "bSortable": false }
          ],
+         scrollY:        "300px",
+         scrollX:        true,
+         scrollCollapse: true,
+         paging:         true,
+         fixedColumns:   true,
          "aaSorting": [],
          drawCallback: function () {
             $('[rel="tooltip"]').tooltip({trigger: "hover"});

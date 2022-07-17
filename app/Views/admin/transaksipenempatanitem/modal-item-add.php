@@ -3,8 +3,15 @@
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header bg-primary" style="padding: 1rem;">
-				<h4 class="modal-title"><i class="fa fa-cog text-default"></i> Tambah Aset untuk Ditempatkan</h4>
-			</div>
+				<div class="col-md-6">
+					<h4 class="modal-title">
+						<div class="text-center">Tambah Aset untuk Ditempatkan</div>
+					</h4>
+				</div>
+		        <div class="col md-4">
+
+		        </div>
+		    </div>
 			<div class="modal-body">
 				<form action="<?= site_url('admin/penempatanitem/create') ?>" class="form-horizontal" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
@@ -21,7 +28,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label"></label>
 						<div class="col-md-8">
-							<a class="btn btn-xs btn-success" href="javaScript:void(0)" onclick="window.open('<?= site_url('admin/penempatan/pencarian_barang') ?>','Pencarian Barang','toolbar=yes,scrollbars=yes,resizable=yes,top=30,width=800,height=800')" target="_SELF"><i class="fa fa-search-plus"></i>&nbsp;Search Items</a>
+							<a class="btn btn-sm btn-success" href="javaScript:void(0)" onclick="window.open('<?= site_url('admin/penempatan/pencarian_barang') ?>','Pencarian Barang','toolbar=yes,scrollbars=yes,resizable=yes,top=30,width=80000,height=80000')" target="_SELF">Search Items</a>
 						</div>
 					</div>
 					<div class="form-group">
@@ -34,7 +41,7 @@
 						<label class="col-md-3 control-label">Pengguna</label>
 						<div class="col-md-8">
 							<select name="id_pengguna_modal" id="id_pengguna_modal" class="form-control" style="width:100%">
-								<option value="1">Pilih Pengguna</option>
+								<option disabled selected value="">Pilih Pengguna</option>
 								<?php foreach ($pengguna as $key => $value): ?>
 									<option value="<?= $value['id_pengguna'] ?>"><?= $value['nama_pengguna'] ?></option>
 								<?php endforeach ?>
@@ -42,21 +49,21 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 control-label">Pengguna</label>
+						<label class="col-md-3 control-label">Hak</label>
 						<div class="col-md-8">
 							<select name="id_hak_modal" id="id_hak_modal" class="form-control" style="width:100%">
-								<option value="1">Pilih Hak</option>
+								<option disabled selected value="">Pilih Hak</option>
 								<?php foreach ($hak as $key => $value): ?>
 									<option value="<?= $value['id_hak'] ?>"><?= $value['uraian_hak'] ?></option>
 								<?php endforeach ?>
 							</select>
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
+			</div>
+			<div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Tambah</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				</div>
+			</div>
 			</form>
 		</div>
 	</div>

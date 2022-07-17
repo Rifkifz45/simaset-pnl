@@ -46,9 +46,9 @@
                <!-- PAGE CONTENT BEGINS -->
                <div class="clearfix">
                   <div class="pull-left">
-                     <button data-toggle="modal" data-target="#add" type="button" class="btn btn-sm btn-primary">
+                     <a href="<?= site_url('admin/inventaris_tanah/add') ?>" class="btn btn-sm btn-primary">
                      <i class="ace-icon fa fa-plus-circle"></i> Add New
-                     </button>
+                     </a>
                      <button data-toggle="modal" data-target="#import" type="button" class="btn btn-sm btn-success">
                      <i class="ace-icon glyphicon glyphicon-import"></i> Import Tanah
                      </button>
@@ -96,17 +96,11 @@
                            <td><?= $value->tercatat ?></td>
                            <td><?= $value->uraian_kondisi ?></td>
                            <td>Rp. <?= number_format($value->nilai_buku) ?></td>
-                           <td class="center">
+                           <td width="100">
                               <div class="btn-group">
-                                 <a data-toggle="tooltip" data-placement="top" rel="tooltip" title="Lihat" class="btn btn-xs btn-white">
-                                <i class="ace-icon fa fa-eye"></i>
-                                </a>
-                                <a data-toggle="modal" data-target="#edit<?= $value->id ?>" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Edit" class="btn btn-xs btn-info">
-                                <i class="ace-icon glyphicon glyphicon-edit"></i>
-                                </a>
-                                <a data-toggle="modal" data-target="#delete<?= $value->id ?>" data-toggle="tooltip" data-placement="top" rel="tooltip" title="Delete" class="btn btn-xs btn-danger">
-                                <i class="ace-icon glyphicon glyphicon-trash"></i>
-                                </a>
+                                <a href="<?= site_url('admin/inventaris_tanah/detail/'.$value->id) ?>" data-toggle="tooltip" data-placement="left" rel="tooltip" type="button" title="Detail" class="btn btn-xs btn-success"><i class="ace-icon fa fa-folder-open-o"></i> </a>
+                                <a href="<?= site_url('admin/inventaris_tanah/edit/'.$value->id) ?>" data-toggle="tooltip" data-placement="left" rel="tooltip" type="button" title="Edit" class="btn btn-xs btn-info"><i class="ace-icon glyphicon glyphicon-edit"></i> </a>
+                                 <a data-toggle="modal" data-target="#delete<?= $value->id ?>" data-toggle="tooltip" data-placement="left" rel="tooltip" type="button" title="Delete" class="btn btn-xs btn-danger"><i class="ace-icon fa fa-trash"></i> </a>
                              </div>
                            </td>
                         </tr>
@@ -116,6 +110,7 @@
                </div>
 
                <?= $this->include('admin/inventaristanah/modal-import') ?>
+               <?= $this->include('admin/inventaristanah/modal-delete') ?>
                <!-- PAGE CONTENT ENDS -->
             </div>
             <!-- /.col -->

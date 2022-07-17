@@ -24,9 +24,9 @@
 					<a href="#">Home</a>
 				</li>
 				<li>
-					<a href="<?= site_url('admin/penempatan') ?>">Placement</a>
+					<a href="<?= site_url('admin/penempatan') ?>">Penempatan</a>
 				</li>
-				<li class="active">Placement Detail</li>
+				<li class="active"><?= $penempatan['idtransaksi_penempatan'] ?></li>
 			</ul>
 			<!-- /.breadcrumb -->
 			<div class="nav-search" id="nav-search">
@@ -41,46 +41,10 @@
 		</div>
 		<div class="page-content">
 			<?= $this->include('admin/configurejs') ?>
-			<div class="page-header">
-				<h1>
-					Detail
-					<small>
-					Data Penempatan Aset
-					</small>
-				</h1>
-			</div>
 			<!-- /.page-header -->
 			<div class="row">
 				<div class="col-xs-12">
 					<!-- PAGE CONTENT BEGINS -->
-					<div class="row">
-						<div id="user-profile-1" class="user-profile row">
-							<div class="col-xs-12 col-sm-6">
-								<div class="profile-user-info profile-user-info-striped">
-									<div class="profile-info-row">
-										<div class="profile-info-name"> ID SYS </div>
-										<div class="profile-info-value">
-											<span class="editable editable-click" id="username"><?= $penempatan['idtransaksi_penempatan'] ?></span>
-										</div>
-									</div>
-									<div class="profile-info-row">
-										<div class="profile-info-name"> Lokasi </div>
-										<div class="profile-info-value">
-											<i class="fa fa-map-marker light-orange bigger-110"></i>
-											<span class="editable editable-click"><?= $penempatan['nama_gedung'] ?></span>
-											<span class="editable editable-click"><?= $penempatan['nama_lokasi'] ?></span>
-										</div>
-									</div>
-									<div class="profile-info-row">
-										<div class="profile-info-name"> Keterangan </div>
-										<div class="profile-info-value">
-											<span class="editable editable-click"><?= $penempatan['keterangan'] ?></span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 					<?php if (!empty(session()->getFlashdata('pesan'))) : ?>
 					<div class="space-12"></div>
 					<div class="alert alert-block alert-success" style="margin-bottom: 0;">
@@ -91,9 +55,38 @@
 						<?= session()->getFlashdata('pesan') ?>
 					</div>
 					<?php endif; ?>
-					<div class="space-12"></div>
+					<div class="space-6"></div>
 					<div class="row">
 						<div class="col-md-12 col-xs-12">
+	                              <table class="table table-bordered table-striped" style="width:70%">
+	                                 <thead>
+	                                    <tr>
+	                                       <th width="20%">List</th>
+	                                       <th>Keterangan</th>
+	                                    </tr>
+	                                 </thead>
+	                                 <tbody>
+	                                    <tr>
+	                                       <td>ID Penempatan</td>
+	                                       <td><span class="editable editable-click" id="username"><?= $penempatan['idtransaksi_penempatan'] ?></span></td>
+	                                    </tr>
+	                                    <tr>
+	                                       <td>Lokasi</td>
+	                                       <td><i class="fa fa-map-marker light-orange bigger-110"></i>
+											<span class="editable editable-click"><?= $penempatan['nama_gedung'] ?></span>
+											<span class="editable editable-click"><?= $penempatan['nama_lokasi'] ?></span>
+										</td>
+	                                    </tr>
+	                                    <tr>
+	                                       <td>Tanggal Penempatan</td>
+	                                       <td><span class="editable editable-click"><?= date('d-m-Y', strtotime($penempatan['tgl_penempatan'])) ?></span></td>
+	                                    </tr>
+	                                    <tr>
+	                                       <td>Status Penempatan</td>
+	                                       <td><?= $penempatan['status_penempatan'] ?></td>
+	                                    </tr>
+	                                 </tbody>
+	                              </table>
 							<div class="panel with-nav-tabs panel-default">
 								<div class="panel-heading">
 									<ul class="nav nav-tabs">
@@ -119,7 +112,7 @@
 											</div>
 											<div class="space-6"></div>
 											<div class="table-header">
-												<span class="text-left">Results for "Data to Distribution"</span>
+												<span class="text-left">List asset untuk ditempatkan</span>
 											</div>
 											<div>
 												<table id="dynamic-table" class="table table-striped table-bordered table-hover">
@@ -148,10 +141,17 @@
 															<td><?= $value->merk ?></td>
 															<td><?= $value->nama_pengguna ?></td>
 															<td><?= $value->uraian_hak ?></td>
-															<td class="text-center">
-																<a data-toggle="modal" data-target="#pengguna<?php echo $value->idtransaksi_penempatan_item ?>" data-toggle="tooltip" rel="tooltip" data-placement="top" type="button" class="btn btn-xs btn-info" title="Edit Pengguna"><i class="ace-icon glyphicon glyphicon-edit bigger-120"></i></a>
-																<a data-toggle="modal" data-target="#deleteitem<?php echo $value->idtransaksi_penempatan_item ?>" data-toggle="tooltip" rel="tooltip" data-placement="top" type="button" class="btn btn-xs btn-danger" title="Delete Data"><i class="ace-icon fa fa-trash"></i></a>
-															</td>
+															<td class="center">
+															<div class="action-buttons">
+																<a title="Edit Data" data-toggle="modal" data-target="#pengguna<?php echo $value->idtransaksi_penempatan_item ?>" class="green" href="#">
+																	<i class="ace-icon fa fa-pencil bigger-130"></i>
+																</a>
+
+																<a title="Delete Data" data-toggle="modal" data-target="#deleteitem<?php echo $value->idtransaksi_penempatan_item ?>" class="red" href="#">
+																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
+																</a>
+															</div>
+														</td>
 														</tr>
 														<?php endforeach ?>
 													</tbody>

@@ -2,7 +2,12 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header bg-primary" style="padding: 1rem;">
-        <h4 class="modal-title"><div class="text-left"><i class="fa fa-cog text-default"></i>&nbsp;Entry Data Kodefikasi Barang</div></h4>
+        <div class="col-md-6">
+          <h4 class="modal-title"><div class="text-center">Entry Data Kodefikasi Barang</div></h4>
+        </div>
+        <div class="col md-4">
+
+        </div>
       </div>
       <div class="modal-body">
         <form id="validation-form" action="<?= site_url('admin/kategori/create') ?>" class="form-horizontal" method="POST">

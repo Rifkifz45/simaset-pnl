@@ -1,30 +1,45 @@
-<div class="modal" id="add" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-primary" style="padding: 1rem;">
-        <h4 class="modal-title"><div class="text-left"><i class="fa fa-cog text-default"></i>&nbsp;Entry Data Hak dari Barang</div></h4>
-      </div>
-      <div class="modal-body">
-        <form id="validation-form" action="<?= site_url('admin/hak/create') ?>" class="form-horizontal" method="POST">
-          <div class="form-group">
-            <label for="id_hak" class="col-md-3 control-label">Kode Hak : </label>
-            <div class="col-md-7">
-              <input autofocus type="text" id="id_hak" name="id_hak" required maxlength="3" class="form-control">
-            </div>
-          </div>
+<?php
+  $db = \Config\Database::connect();
+  $dataKode   = buatKode2("tweb_hak", "H");
+?>
 
-          <div class="form-group">
-            <label for="uraian_hak" class="col-md-3 control-label">Uraian Hak : </label>
+<div class="modal fade" id="add" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header bg-primary" style="padding: 1rem;">
             <div class="col-md-7">
-              <input id="uraian_hak" type="text" value="*" name="uraian_hak" required placeholder=" Kode Bidang berdasarkan inputan golongan" class="form-control">
+               <h4 class="modal-title"><div class="text-center">Entry Data Penguasaan</div></h4>
             </div>
-          </div>
+            <div class="col md-3">
+               
+            </div>
+         </div>
+         <form method="post" action="<?= site_url('admin/hak/create') ?>" id="form" class="form-horizontal">
+         <div class="modal-body form">
+             <div class="form-body">
+                <div class="form-group">
+                   <label id="id_hak" class="control-label col-md-3">Kode</label>
+                   <div class="col-md-9">
+                      <input name="id_hak" id="id_hak" placeholder="Customer Name" class="form-control" type="text" value="<?= $dataKode ?>">
+                      <span class="help-block"></span>
+                   </div>
+                </div>
+                <div class="form-group">
+                   <label class="control-label col-md-3"> Uraian</label>
+                   <div class="col-md-9">
+                      <input autofocus name="uraian_hak" placeholder="Nama Hak" class="form-control" type="text">
+                      <span class="help-block"></span>
+                   </div>
+                </div>
+             </div>
+         </div>
+         <div class="modal-footer">
+            <button type="submit" id="btnSave" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+         </div>
+         </form>
       </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-      </form>
-    </div>
-  </div>
+      <!-- /.modal-content -->
+   </div>
+   <!-- /.modal-dialog -->
 </div>

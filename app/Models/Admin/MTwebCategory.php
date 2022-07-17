@@ -26,6 +26,16 @@ class MTwebCategory extends Model
         }  
     }
 
+    public function getBidang(){
+        return $this
+        ->where('bidang !=', '*')
+        ->where('kelompok', '*')
+        ->where('sub_kelompok', '*')
+        ->where('sub_sub_kelompok', '*')
+        ->findAll() ; 
+    }
+
+
     public function filterKategori()
     {
     return $this

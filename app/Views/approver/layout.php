@@ -38,7 +38,7 @@
 			}
 			</style>
 	</head>
-	<body class="no-skin">
+	<body class="skin-1">
 		<?= $this->include('approver/navbar') ?>
 		<div class="main-container ace-save-state" id="main-container">
 			<script type="text/javascript">

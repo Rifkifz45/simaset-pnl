@@ -2,9 +2,14 @@
 <div class="modal fade" id="approve<?php echo $value['idtransaksi_penempatan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title"><span class="label label-success"> # Approve</span>&emsp;Are you sure want to approve this?</h5>
-			</div>
+			<div class="modal-header bg-success" style="padding: 1rem;">
+		        <div class="col-md-3">
+		          <h4 class="modal-title"><div class="text-center">Terima Permintaan Penempatan</div></h4>
+		        </div>
+		        <div class="col md-7">
+
+		        </div>
+		      </div>
 			<div class="modal-body">
 				<form method="POST" action="<?= site_url('approver/penempatan/terima/'.$value['idtransaksi_penempatan']) ?>">
 					<div class="form-group">

@@ -1,10 +1,5 @@
 <?= $this->extend('admin/layout') ?>
 
-<?= $this->section('head') ?>
-<link rel="stylesheet" href="<?= base_url('') ?>/template/assets/css/dist/css/select2.css" />
-<link rel="stylesheet" href="<?= base_url('') ?>/template/assets/css/dist/css/select2-bootstrap.css" />
-<?= $this->endSection('') ?>
-
 <?= $this->section('content') ?>
 <div class="main-content">
    <div class="main-content-inner">
@@ -45,9 +40,9 @@
                <!-- PAGE CONTENT BEGINS -->
                <div class="clearfix">
                   <div class="pull-left">
-                     <button data-toggle="modal" data-target="#add" type="button" class="btn btn-sm btn-primary">
+                     <a href="<?= site_url('admin/inventaris_peralatan/add') ?>" type="button" class="btn btn-sm btn-primary">
                      <i class="ace-icon fa fa-plus-circle"></i> Add New
-                     </button>
+                     </a>
                      <button data-toggle="modal" data-target="#import" type="button" class="btn btn-sm btn-success">
                      <i class="ace-icon glyphicon glyphicon-import"></i> Import Peralatan
                      </button>
@@ -56,7 +51,7 @@
                </div>
                <div class="space-2"></div>
                <div class="table-header">
-                  <span class="text-left"><?= count($peralatan) ?> Data Available in field "Inventaris Peralatan"</span>
+                  <span class="text-left"><?= $jlh ?> Data Inventaris Peralatan dan Mesin Tersedia</span>
                </div>
                <div>
                   <table id="dynamic-table" class="table table-striped table-bordered table-hover">
@@ -97,7 +92,6 @@
 <?= $this->endSection() ?>
 <?= $this->section('script') ?>
 <!-- page specific plugin scripts -->
-<script src="<?= base_url('') ?>/template/assets/css/dist/js/select2.min.js"></script>
 <script src="<?= base_url('') ?>/template/assets/js/jquery.dataTables.min.js"></script>
 <script src="<?= base_url('') ?>/template/assets/js/jquery.dataTables.bootstrap.min.js"></script>
 <script src="<?= base_url('') ?>/template/assets/js/dataTables.buttons.min.js"></script>

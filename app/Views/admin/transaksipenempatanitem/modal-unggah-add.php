@@ -3,8 +3,15 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header bg-primary" style="padding: 1rem;">
-				<h4 class="modal-title"><i class="fa fa-cog text-default"></i> Unggah Dokumen Penempatan</h4>
-			</div>
+				<div class="col-md-4">
+					<h4 class="modal-title">
+						<div class="text-center">Unggah Dokumen</div>
+					</h4>
+				</div>
+		        <div class="col md-6">
+
+		        </div>
+		    </div>
 			<div class="modal-body">
 				<form action="<?= site_url('admin/penempatan/add_dokumen') ?>" class="form-horizontal" method="POST" enctype="multipart/form-data">
 					<div class="form-group">

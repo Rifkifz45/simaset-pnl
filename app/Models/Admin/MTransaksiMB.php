@@ -1,54 +1,47 @@
 <?php
-namespace App\Controllers\Admin;
-use App\Controllers\BaseController;
-use App\Models\Admin\MutasiModel;
-use App\Models\Admin\MutasiDetailModel;
 
-class Mutations Extends BaseController{
-	public function __construct()
-	{
-		$this->MutasiModel = new MutasiModel();
-		$this->MutasiDetailModel = new MutasiDetailModel();
-		helper('form');
-	}
+namespace App\Models\Admin;
+use CodeIgniter\Model;
 
-	  public function index()
+class MTransaksiMB extends Model
+{
+    protected $table          = "transaksi_mutasi";
+    protected $primaryKey     = 'idtransaksi_mutasi';
+    protected $allowedFields  = [
+        'groups_id', 'sgroups_name',
+    ];
+    protected $useTimestamps  = false;
+
+    public function getTransaksiMB($id = false)
     {
-    	$mutasi   = $this->MutasiModel->findAll();
-    	$countAll = $this->MutasiModel->countAllResults();
-        return view('admin/mutasi/index', [
-        	'mutasi' 	=> $mutasi,
-        	'countall'	=> $countAll
-        ]);
+        if($id === false){
+            return $this->findAll();
+        } else {
+            return $this->getWhere(['idtransaksi_mutasi' => $id]);
+        }  
     }
 
-    public function new(){
-        return view('admin/mutasi/new');
+    public function detailTransaksiMB(){
+        $dt = $this->db->table($this->table)
+        ->join('transaksi_penempatan', 'transaksi_penempatan.idtransaksi_penempatan = transaksi_mutasi.idtransaksi_penempatan', 'left')
+        ->join('tweb_lokasi', 'tweb_lokasi.id_lokasi = transaksi_penempatan.id_lokasi', 'left')
+        ->join('tweb_gedung', 'tweb_gedung.id_gedung = tweb_lokasi.id_gedung', 'left')
+        ->get()->getResultArray();
+        return $dt;
+    }
+ 
+    public function insertTransaksiMB($data)
+    {
+        return $this->db->table($this->table)->insert($data);
     }
 
-    public function create(){
-    	$data = [
-			'mutations_name'         => $this->request->getVar('mutations_name'),
-			'mutations_descriptions' => 123,
-			'mutations_date'         => $this->request->getVar('mutations_date'),
-			'mutations_locations'    => $this->request->getVar('mutations_locations'),
-			'mutations_document'     => 'Test.pdf',
-			'document_size'          => 12373,
-			'user_post'              => 1
-    	];
-    	$simpan = $this->MutasiModel->insertMutations($data);
-    	if($simpan){
-    		session()->setFlashdata('success', 'Created Mutations successfully');
-    		return redirect()->to(site_url('admin/mutasi')); 
-    	}
+    public function updateTransaksiMB($data, $id)
+    {
+        return $this->db->table($this->table)->update($data, ['idtransaksi_mutasi' => $id]);
     }
 
-    public function detail($id){
-    	$m_detail = $this->MutasiDetailModel->where('mutations_id', $id)->findAll();
-    	$mutasi = $this->MutasiModel->where('mutations_id', $id)->first();
-    	return view('admin/mutasi/detail', [
-    		'm_detail' 	=>	$m_detail,
-    		'mutasi'	=>	$mutasi
-    	]);
-    }
+    public function deleteTransaksiMB($id)
+    {
+        return $this->db->table($this->table)->delete(['idtransaksi_mutasi' => $id]);
+    } 
 }

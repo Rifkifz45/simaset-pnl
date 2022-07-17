@@ -25,7 +25,7 @@ class TwebHak Extends BaseController{
         ]);
 
         if ($simpan) {
-        	session()->setFlashdata('pesan', 'Mastery data has been successfully created.');
+        	session()->setFlashdata('pesan', 'Data tweb hak berhasil <b>ditambahkan!!</b>');
         	return $this->response->redirect(site_url('admin/hak'));
         }else{
         	echo "Gagal";
@@ -40,7 +40,7 @@ class TwebHak Extends BaseController{
         ], $id);
 
 		if ($update) {
-			session()->setFlashdata('pesan', 'Mastery data has been successfully updated.');
+			session()->setFlashdata('pesan', 'Data tweb hak berhasil <b>diupdate!!</b>');
 			return redirect()->back();
 		}
 	}
@@ -49,7 +49,7 @@ class TwebHak Extends BaseController{
 		$delete = $this->MTwebHak->deleteHak($id);
 
 		if ($delete) {
-			session()->setFlashdata('pesan', 'Mastery data has been successfully deleted.');
+			session()->setFlashdata('pesan', 'Data tweb hak berhasil <b>dihapus!!</b>');
 			return redirect()->back();
 		}else{
 			echo "Gagal Delete";
